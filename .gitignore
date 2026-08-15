@@ -1,0 +1,16 @@
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# raw per-season/per-player pulls are large and easy to regenerate via
+# src/fetch_match_data.py + src/fetch_player_data.py; not needed at runtime
+data/raw/
+
+# stale artifacts from the old static-CSV dashboard; the app now computes
+# these live on each cache refresh (see dashboard/app.py). The three
+# committed data/processed/*.csv files below are the only ones still needed.
+data/processed/champion_classifier_predictions.csv
+data/processed/season_simulation.csv
+data/processed/team_strengths.csv
+data/processed/player_predictions_next_season.csv

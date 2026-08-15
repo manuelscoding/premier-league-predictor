@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pl-dashboard",
+      "runtimeExecutable": "/Users/mannyhernandez/Documents/Modeling/premier-league-predictor/venv/bin/streamlit",
+      "runtimeArgs": ["run", "/Users/mannyhernandez/Documents/Modeling/premier-league-predictor/dashboard/app.py", "--server.headless", "true"],
+      "port": 8501
+    }
+  ]
+}
