@@ -4,8 +4,5 @@ scikit-learn
 scipy
 statsmodels
 requests
-matplotlib
-seaborn
 streamlit
 plotly
-jupyter
