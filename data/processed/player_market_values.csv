@@ -1,0 +1,827 @@
+player_id,name,current_club_name,position,sub_position,market_value_in_eur,highest_market_value_in_eur
+3333,James Milner,Brighton & Hove Albion,Midfield,Central Midfield,500000.0,21000000.0
+16306,Casemiro,Manchester United,Midfield,Defensive Midfield,6000000.0,80000000.0
+29692,Lukasz Fabianski,West Ham United,Goalkeeper,Goalkeeper,150000.0,9000000.0
+29712,John Ruddy,Newcastle United,Goalkeeper,Goalkeeper,100000.0,5000000.0
+34130,Tom Heaton,Manchester United,Goalkeeper,Goalkeeper,100000.0,6000000.0
+51471,Mateo Kovacic,Manchester City,Midfield,Central Midfield,10000000.0,45000000.0
+52570,Fraser Forster,AFC Bournemouth,Goalkeeper,Goalkeeper,400000.0,15000000.0
+53622,İlkay Gündoğan,Manchester City,Midfield,Central Midfield,2000000.0,50000000.0
+61651,Jordan Henderson,Brentford FC,Midfield,Defensive Midfield,1200000.0,35000000.0
+61697,Wes Foderingham,West Ham United,Goalkeeper,Goalkeeper,450000.0,900000.0
+61841,Adam Smith,AFC Bournemouth,Defender,Right-Back,300000.0,9000000.0
+63200,Ashley Barnes,Burnley FC,Attack,Centre-Forward,150000.0,10000000.0
+67063,Danny Welbeck,Brighton & Hove Albion,Attack,Centre-Forward,3000000.0,18000000.0
+68390,Séamus Coleman,Everton FC,Defender,Right-Back,200000.0,19000000.0
+72476,Bernd Leno,Fulham FC,Goalkeeper,Goalkeeper,6000000.0,35000000.0
+73564,Jason Steele,Brighton & Hove Albion,Goalkeeper,Goalkeeper,500000.0,4000000.0
+74960,Martin Dúbravka,Burnley FC,Goalkeeper,Goalkeeper,500000.0,7500000.0
+75489,Niclas Füllkrug,West Ham United,Attack,Centre-Forward,3500000.0,15000000.0
+85177,Nathaniel Clyne,Crystal Palace,Defender,Right-Back,300000.0,21000000.0
+85941,Stefan Ortega,Manchester City,Goalkeeper,Goalkeeper,4000000.0,9000000.0
+95424,Kyle Walker,Burnley FC,Defender,Right-Back,1500000.0,50000000.0
+95795,Václav Hladký,Burnley FC,Goalkeeper,Goalkeeper,150000.0,500000.0
+95810,Kieran Trippier,Newcastle United,Defender,Right-Back,1500000.0,35000000.0
+99331,Jannik Vestergaard,Leicester City,Defender,Centre-Back,1000000.0,20000000.0
+99397,Karl Darlow,Leeds United,Goalkeeper,Goalkeeper,200000.0,4500000.0
+105470,Alisson,Liverpool FC,Goalkeeper,Goalkeeper,15000000.0,90000000.0
+108354,Jordan Ayew,Leicester City,Attack,Centre-Forward,1800000.0,10000000.0
+108725,Chris Wood,Nottingham Forest,Attack,Centre-Forward,5000000.0,18000000.0
+110864,Sam Johnstone,Wolverhampton Wanderers,Goalkeeper,Goalkeeper,2000000.0,12000000.0
+111051,Nampalys Mendy,Watford FC,Midfield,Defensive Midfield,700000.0,12000000.0
+111195,Joël Veltman,Brighton & Hove Albion,Defender,Right-Back,1500000.0,10000000.0
+111455,Granit Xhaka,Sunderland AFC,Midfield,Defensive Midfield,8000000.0,50000000.0
+111873,Emiliano Martínez,Aston Villa,Goalkeeper,Goalkeeper,12000000.0,35000000.0
+116648,Marcus Bettinelli,Manchester City,Goalkeeper,Goalkeeper,300000.0,4000000.0
+118534,Michael Keane,Everton FC,Defender,Centre-Back,3000000.0,30000000.0
+120629,Alphonse Areola,West Ham United,Goalkeeper,Goalkeeper,4000000.0,17500000.0
+121254,Adam Davies,Sheffield United,Goalkeeper,Goalkeeper,200000.0,750000.0
+121324,John Egan,Hull City,Defender,Centre-Back,1000000.0,13000000.0
+123275,Tom Cairney,Fulham FC,Midfield,Central Midfield,500000.0,18000000.0
+123536,Simon Moore,Sunderland AFC,Goalkeeper,Goalkeeper,75000.0,500000.0
+123682,Callum Wilson,West Ham United,Attack,Centre-Forward,4000000.0,30000000.0
+124884,Marco Bizot,Aston Villa,Goalkeeper,Goalkeeper,1500000.0,7000000.0
+126600,Kenny McLean,Norwich City,Midfield,Central Midfield,400000.0,4500000.0
+126664,Lucas Digne,Aston Villa,Defender,Left-Back,6000000.0,35000000.0
+126665,Idrissa Gueye,Everton FC,Midfield,Defensive Midfield,500000.0,30000000.0
+127181,Benjamin Lecomte,Fulham FC,Goalkeeper,Goalkeeper,800000.0,17000000.0
+127202,Matz Sels,Nottingham Forest,Goalkeeper,Goalkeeper,3500000.0,8000000.0
+130164,Jordan Pickford,Everton FC,Goalkeeper,Goalkeeper,13000000.0,40000000.0
+131978,Ross Barkley,Aston Villa,Midfield,Central Midfield,4000000.0,30000000.0
+131996,Bertrand Traoré,Sunderland AFC,Attack,Right Winger,4000000.0,20000000.0
+134270,Dan Burn,Newcastle United,Defender,Centre-Back,4000000.0,12000000.0
+135343,Fabian Schär,Newcastle United,Defender,Centre-Back,4000000.0,16000000.0
+136401,Daniel Bentley,Wolverhampton Wanderers,Goalkeeper,Goalkeeper,800000.0,4000000.0
+139208,Virgil van Dijk,Liverpool FC,Defender,Centre-Back,15000000.0,100000000.0
+141573,George Saville,Luton Town,Midfield,Central Midfield,700000.0,7000000.0
+142310,Willy Boly,Nottingham Forest,Defender,Centre-Back,300000.0,18000000.0
+142389,Mark Gillespie,Newcastle United,Goalkeeper,Goalkeeper,100000.0,500000.0
+144028,Leandro Trossard,Arsenal FC,Attack,Left Winger,18000000.0,38000000.0
+146310,Wataru Endo,Liverpool FC,Midfield,Defensive Midfield,4000000.0,13000000.0
+148153,Lewis Dunk,Brighton & Hove Albion,Defender,Centre-Back,3500000.0,27000000.0
+148367,Christian Nørgaard,Arsenal FC,Midfield,Defensive Midfield,5000000.0,20000000.0
+148455,Mohamed Salah,Liverpool FC,Attack,Right Winger,22000000.0,150000000.0
+167268,Paddy McNair,Hull City,Defender,Centre-Back,1500000.0,6000000.0
+171679,Matt Doherty,Wolverhampton Wanderers,Defender,Right-Back,1000000.0,20000000.0
+173504,James Tarkowski,Everton FC,Defender,Centre-Back,5000000.0,28000000.0
+177476,Nathan Aké,Manchester City,Defender,Centre-Back,12000000.0,42000000.0
+177907,Harry Maguire,Manchester United,Defender,Centre-Back,8000000.0,70000000.0
+181380,Arthur Masuaku,Sunderland AFC,Defender,Left-Back,2000000.0,10000000.0
+181579,James Ward-Prowse,West Ham United,Midfield,Central Midfield,5000000.0,38000000.0
+183288,Luke Shaw,Manchester United,Defender,Left-Back,8000000.0,42000000.0
+183318,Jamaal Lascelles,Newcastle United,Defender,Centre-Back,2000000.0,18000000.0
+184528,Emil Krafth,Newcastle United,Defender,Right-Back,750000.0,5000000.0
+184573,Victor Lindelöf,Aston Villa,Defender,Centre-Back,5000000.0,35000000.0
+186186,Bobby De Cordova-Reid,Leicester City,Midfield,Attacking Midfield,700000.0,10000000.0
+186590,John Stones,Manchester City,Defender,Centre-Back,12000000.0,60000000.0
+188077,Ryan Christie,AFC Bournemouth,Midfield,Central Midfield,8000000.0,12000000.0
+192080,Nick Pope,Newcastle United,Goalkeeper,Goalkeeper,5000000.0,20000000.0
+192279,Kepa Arrizabalaga,Arsenal FC,Goalkeeper,Goalkeeper,5000000.0,60000000.0
+192765,Ben Davies,Tottenham Hotspur,Defender,Centre-Back,3000000.0,25000000.0
+193116,John McGinn,Aston Villa,Midfield,Central Midfield,13000000.0,32000000.0
+194386,Alex Cairns,Leeds United,Goalkeeper,Goalkeeper,50000.0,250000.0
+196722,Remi Matthews,Crystal Palace,Goalkeeper,Goalkeeper,200000.0,500000.0
+199527,Jacob Murphy,Newcastle United,Attack,Right Winger,12000000.0,16000000.0
+201574,Angus Gunn,Nottingham Forest,Goalkeeper,Goalkeeper,1000000.0,10000000.0
+203460,Jack Grealish,Everton FC,Attack,Left Winger,20000000.0,100000000.0
+204103,Adama Traoré,West Ham United,Attack,Right Winger,6000000.0,40000000.0
+206040,Raúl Jiménez,Fulham FC,Attack,Centre-Forward,3000000.0,50000000.0
+206225,Isaac Hayden,Queens Park Rangers,Midfield,Defensive Midfield,400000.0,10000000.0
+206746,Kenny Tete,Fulham FC,Defender,Right-Back,8000000.0,15000000.0
+207014,Will Hughes,Crystal Palace,Midfield,Central Midfield,5000000.0,18000000.0
+209212,Solly March,Brighton & Hove Albion,Attack,Right Winger,1000000.0,22000000.0
+212847,Adam Webster,Brighton & Hove Albion,Defender,Centre-Back,3000000.0,25000000.0
+214666,Connor Roberts,Burnley FC,Defender,Right-Back,1500000.0,8000000.0
+215810,Tom King,Everton FC,Goalkeeper,Goalkeeper,100000.0,200000.0
+225452,Patrick Roberts,Sunderland AFC,Attack,Right Winger,3200000.0,7500000.0
+226049,Freddie Woodman,Liverpool FC,Goalkeeper,Goalkeeper,3000000.0,10000000.0
+226973,Harrison Reed,Fulham FC,Midfield,Central Midfield,2000000.0,18000000.0
+234803,Andrew Robertson,Liverpool FC,Defender,Left-Back,7000000.0,80000000.0
+236490,Ola Aina,Nottingham Forest,Defender,Right-Back,18000000.0,22000000.0
+236953,Sam Byram,Leeds United,Defender,Left-Back,400000.0,4500000.0
+238223,Ederson,Manchester City,Goalkeeper,Goalkeeper,10000000.0,70000000.0
+240306,Bruno Fernandes,Manchester United,Midfield,Attacking Midfield,35000000.0,90000000.0
+240692,Reinildo Mandava,Sunderland AFC,Defender,Left-Back,4000000.0,25000000.0
+241641,Bernardo Silva,Manchester City,Midfield,Attacking Midfield,22000000.0,100000000.0
+242606,Josh Cullen,Burnley FC,Midfield,Central Midfield,4000000.0,13000000.0
+242631,Alex Iwobi,Fulham FC,Attack,Left Winger,20000000.0,32000000.0
+243591,Lawrence Vigouroux,Swansea City,Goalkeeper,Goalkeeper,450000.0,500000.0
+245056,Saša Lukić,Fulham FC,Midfield,Central Midfield,10000000.0,15000000.0
+247666,Ricardo Santos,Swansea City,Defender,Centre-Back,,
+249089,Lewis Cook,AFC Bournemouth,Midfield,Central Midfield,11000000.0,20000000.0
+249565,Youri Tielemans,Aston Villa,Midfield,Central Midfield,30000000.0,55000000.0
+249994,José Sá,Wolverhampton Wanderers,Goalkeeper,Goalkeeper,3500000.0,18000000.0
+250426,Adam Armstrong,Wolverhampton Wanderers,Attack,Centre-Forward,6000000.0,18000000.0
+250478,Matt Targett,Newcastle United,Defender,Left-Back,3000000.0,17000000.0
+251106,Enes Ünal,AFC Bournemouth,Attack,Centre-Forward,7000000.0,25000000.0
+251912,Semi Ajayi,Hull City,Defender,Centre-Back,700000.0,6000000.0
+253677,Tyrone Mings,Aston Villa,Defender,Centre-Back,3000000.0,32000000.0
+255788,Cameron Burgess,Swansea City,Defender,Centre-Back,1500000.0,2500000.0
+256178,Joe Gomez,Liverpool FC,Defender,Centre-Back,13000000.0,42000000.0
+257455,João Palhinha,Tottenham Hotspur,Midfield,Defensive Midfield,15000000.0,60000000.0
+258004,Rúben Dias,Manchester City,Defender,Centre-Back,55000000.0,80000000.0
+258216,Kasey Palmer,Luton Town,Midfield,Attacking Midfield,900000.0,3000000.0
+258878,Tosin Adarabioyo,Chelsea FC,Defender,Centre-Back,16000000.0,20000000.0
+258889,Dominic Solanke,Tottenham Hotspur,Attack,Centre-Forward,28000000.0,45000000.0
+258919,Dean Henderson,Crystal Palace,Goalkeeper,Goalkeeper,28000000.0,28000000.0
+260827,Joachim Andersen,Fulham FC,Defender,Centre-Back,20000000.0,35000000.0
+262226,Timothy Castagne,Fulham FC,Defender,Right-Back,8000000.0,28000000.0
+262300,Ryan Manning,Southampton FC,Defender,Left-Back,2800000.0,3500000.0
+262749,David Raya,Arsenal FC,Goalkeeper,Goalkeeper,30000000.0,40000000.0
+262980,Jefferson Lerma,Crystal Palace,Midfield,Defensive Midfield,6000000.0,25000000.0
+263236,Kevin Danso,Tottenham Hotspur,Defender,Centre-Back,20000000.0,25000000.0
+270171,Vitaly Janelt,Brentford FC,Midfield,Defensive Midfield,16000000.0,22000000.0
+272622,Issa Diop,Fulham FC,Defender,Centre-Back,8000000.0,35000000.0
+273742,Viktor Johansson,Stoke City,Goalkeeper,Goalkeeper,12000000.0,12000000.0
+277033,David Brooks,AFC Bournemouth,Attack,Right Winger,12000000.0,30000000.0
+279455,Harry Wilson,Fulham FC,Attack,Right Winger,25000000.0,25000000.0
+282939,Luke O'Nien,Sunderland AFC,Defender,Centre-Back,700000.0,1800000.0
+283628,Tomáš Souček,West Ham United,Midfield,Defensive Midfield,10000000.0,45000000.0
+284320,Dion Charles,Huddersfield Town,Attack,Centre-Forward,500000.0,850000.0
+284730,Manuel Akanji,Manchester City,Defender,Centre-Back,17000000.0,45000000.0
+284857,Marc Cucurella,Chelsea FC,Defender,Left-Back,50000000.0,55000000.0
+286047,Guglielmo Vicario,Tottenham Hotspur,Goalkeeper,Goalkeeper,18000000.0,35000000.0
+292246,Hee-chan Hwang,Wolverhampton Wanderers,Attack,Centre-Forward,6000000.0,25000000.0
+293194,Borna Sosa,Crystal Palace,Defender,Left-Back,3000000.0,23000000.0
+293281,Jacob Bruun Larsen,Burnley FC,Attack,Left Winger,4000000.0,20000000.0
+294057,James Maddison,Tottenham Hotspur,Midfield,Attacking Midfield,20000000.0,70000000.0
+295313,Taiwo Awoniyi,Nottingham Forest,Attack,Centre-Forward,8000000.0,30000000.0
+296582,Max O'Leary,West Bromwich Albion,Goalkeeper,Goalkeeper,2000000.0,2800000.0
+296802,Walter Benítez,Crystal Palace,Goalkeeper,Goalkeeper,4000000.0,14000000.0
+296978,Liam Cullen,Swansea City,Midfield,Attacking Midfield,3200000.0,3200000.0
+297212,Joe Rodon,Leeds United,Defender,Centre-Back,18000000.0,18000000.0
+297257,Mikey Johnston,West Bromwich Albion,Attack,Left Winger,4000000.0,4000000.0
+306024,Dominic Calvert-Lewin,Leeds United,Attack,Centre-Forward,22000000.0,45000000.0
+309400,Kai Havertz,Arsenal FC,Attack,Centre-Forward,55000000.0,90000000.0
+314241,Josh Laurent,Burnley FC,Midfield,Central Midfield,1500000.0,2200000.0
+314288,Lukas Nmecha,Leeds United,Attack,Centre-Forward,10000000.0,18000000.0
+314367,Marcus Edwards,Burnley FC,Attack,Right Winger,6000000.0,30000000.0
+314875,Jarrod Bowen,West Ham United,Attack,Right Winger,30000000.0,50000000.0
+315858,Gianluigi Donnarumma,Manchester City,Goalkeeper,Goalkeeper,45000000.0,65000000.0
+316264,Martin Ødegaard,Arsenal FC,Midfield,Attacking Midfield,65000000.0,110000000.0
+318508,Olivier Boscagli,Brighton & Hove Albion,Defender,Centre-Back,15000000.0,27000000.0
+319301,Daniel James,Leeds United,Attack,Right Winger,10000000.0,28000000.0
+319859,Mathias Jensen,Brentford FC,Midfield,Central Midfield,10000000.0,30000000.0
+320411,Philip Billing,AFC Bournemouth,Midfield,Central Midfield,6000000.0,22000000.0
+321247,Emiliano Buendía,Aston Villa,Attack,Left Winger,16000000.0,35000000.0
+324358,Ollie Watkins,Aston Villa,Attack,Centre-Forward,25000000.0,65000000.0
+325443,Viktor Gyökeres,Arsenal FC,Attack,Centre-Forward,65000000.0,75000000.0
+326031,Matthijs de Ligt,Manchester United,Defender,Centre-Back,30000000.0,75000000.0
+328658,Kristoffer Ajer,Brentford FC,Defender,Centre-Back,18000000.0,18000000.0
+330659,Justin Kluivert,AFC Bournemouth,Midfield,Attacking Midfield,25000000.0,35000000.0
+332705,Tyler Adams,AFC Bournemouth,Midfield,Defensive Midfield,25000000.0,25000000.0
+333014,Sander Berge,Fulham FC,Midfield,Defensive Midfield,25000000.0,25000000.0
+333241,Joelinton,Newcastle United,Midfield,Central Midfield,25000000.0,42000000.0
+335721,Ben White,Arsenal FC,Defender,Right-Back,30000000.0,55000000.0
+336077,Altay Bayındır,Manchester United,Goalkeeper,Goalkeeper,5000000.0,16000000.0
+338424,Mikel Merino,Arsenal FC,Midfield,Central Midfield,25000000.0,50000000.0
+338629,Sebastiaan Bornauw,Leeds United,Defender,Centre-Back,8000000.0,14000000.0
+339340,Tyrell Malacia,Manchester United,Defender,Left-Back,4000000.0,22000000.0
+339556,Rico Henry,Brentford FC,Defender,Left-Back,13000000.0,28000000.0
+340321,Josh Dasilva,Brentford FC,Midfield,Central Midfield,1500000.0,16000000.0
+340324,Eddie Nketiah,Crystal Palace,Attack,Centre-Forward,10000000.0,35000000.0
+340325,Reiss Nelson,Brentford FC,Attack,Left Winger,8000000.0,18000000.0
+340329,Joe Willock,Newcastle United,Midfield,Central Midfield,14000000.0,38000000.0
+340456,Noussair Mazraoui,Manchester United,Defender,Right-Back,18000000.0,32000000.0
+340918,Caoimhín Kelleher,Brentford FC,Goalkeeper,Goalkeeper,28000000.0,28000000.0
+340990,Alfie Jones,Middlesbrough FC,Defender,Centre-Back,6000000.0,6000000.0
+341051,Kyle Walker-Peters,West Ham United,Defender,Right-Back,12000000.0,25000000.0
+341092,Federico Chiesa,Liverpool FC,Attack,Right Winger,13000000.0,70000000.0
+341501,Hamza Choudhury,Leicester City,Midfield,Defensive Midfield,4000000.0,10000000.0
+342046,Axel Tuanzebe,Burnley FC,Defender,Centre-Back,5000000.0,10000000.0
+342385,Guido Rodríguez,West Ham United,Midfield,Defensive Midfield,4000000.0,28000000.0
+344069,Anton Stach,Leeds United,Midfield,Defensive Midfield,28000000.0,28000000.0
+344830,Tahith Chong,Sheffield United,Midfield,Attacking Midfield,6000000.0,7000000.0
+346314,Trevoh Chalobah,Chelsea FC,Defender,Centre-Back,40000000.0,40000000.0
+346483,Mason Mount,Manchester United,Midfield,Attacking Midfield,25000000.0,75000000.0
+346707,Sean Longstaff,Leeds United,Midfield,Central Midfield,15000000.0,25000000.0
+346890,Noah Okafor,Leeds United,Attack,Left Winger,25000000.0,25000000.0
+348026,Nordi Mukiele,Sunderland AFC,Defender,Right-Back,16000000.0,25000000.0
+349066,Alexander Isak,Liverpool FC,Attack,Centre-Forward,85000000.0,140000000.0
+349701,Antonee Robinson,Fulham FC,Defender,Left-Back,22000000.0,35000000.0
+351749,Kalvin Phillips,Manchester City,Midfield,Defensive Midfield,2500000.0,50000000.0
+352041,Lucas Perri,Leeds United,Goalkeeper,Goalkeeper,10000000.0,16000000.0
+353032,Omar Alderete,Sunderland AFC,Defender,Centre-Back,13000000.0,15000000.0
+354362,Rodrigo Bentancur,Tottenham Hotspur,Midfield,Defensive Midfield,20000000.0,50000000.0
+355915,Cristian Romero,Tottenham Hotspur,Defender,Centre-Back,45000000.0,65000000.0
+356141,Daichi Kamada,Crystal Palace,Midfield,Attacking Midfield,10000000.0,30000000.0
+357119,Ibrahima Konaté,Liverpool FC,Defender,Centre-Back,45000000.0,60000000.0
+357147,Diogo Dalot,Manchester United,Defender,Right-Back,30000000.0,40000000.0
+357162,Florentino,Burnley FC,Midfield,Defensive Midfield,16000000.0,22000000.0
+357565,Rodri,Manchester City,Midfield,Defensive Midfield,50000000.0,130000000.0
+357656,Jayson Molumby,West Bromwich Albion,Midfield,Central Midfield,3500000.0,3500000.0
+357658,Mark Travers,Everton FC,Goalkeeper,Goalkeeper,3000000.0,4000000.0
+357662,Declan Rice,Arsenal FC,Midfield,Central Midfield,120000000.0,120000000.0
+361093,Sven Botman,Newcastle United,Defender,Centre-Back,35000000.0,45000000.0
+362108,Gabriel Gudmundsson,Leeds United,Defender,Left-Back,20000000.0,20000000.0
+363205,Gabriel Jesus,Arsenal FC,Attack,Centre-Forward,17000000.0,80000000.0
+363901,Nik Tzanev,Huddersfield Town,Goalkeeper,Goalkeeper,100000.0,125000.0
+365108,Dan Ndoye,Nottingham Forest,Attack,Right Winger,32000000.0,40000000.0
+369316,Ferdi Kadıoğlu,Brighton & Hove Albion,Defender,Left-Back,35000000.0,35000000.0
+369962,Joël Piroe,Leeds United,Attack,Centre-Forward,10000000.0,18000000.0
+371013,Ivor Pandur,Hull City,Goalkeeper,Goalkeeper,4500000.0,4500000.0
+371851,Jaka Bijol,Leeds United,Defender,Centre-Back,20000000.0,20000000.0
+375885,Ibrahim Sangaré,Nottingham Forest,Midfield,Defensive Midfield,20000000.0,35000000.0
+378710,Richarlison,Tottenham Hotspur,Attack,Centre-Forward,25000000.0,65000000.0
+380350,Igor Julio,West Ham United,Defender,Centre-Back,10000000.0,22000000.0
+380744,Egil Selvik,Watford FC,Goalkeeper,Goalkeeper,1500000.0,1700000.0
+381753,Ilia Gruev,Leeds United,Midfield,Defensive Midfield,12000000.0,12000000.0
+381963,Mike Tresor,Burnley FC,Midfield,Attacking Midfield,2000000.0,15000000.0
+386047,Axel Disasi,West Ham United,Defender,Centre-Back,15000000.0,42000000.0
+388165,Yoane Wissa,Newcastle United,Attack,Centre-Forward,25000000.0,42000000.0
+391005,Mads Roerslev,Brentford FC,Defender,Right-Back,4000000.0,12000000.0
+392179,Hjalmar Ekdal,Burnley FC,Defender,Centre-Back,5000000.0,8000000.0
+392591,Chiedozie Ogbene,Ipswich Town,Attack,Right Winger,4000000.0,8000000.0
+392757,Marc Guéhi,Manchester City,Defender,Centre-Back,70000000.0,70000000.0
+392765,Emile Smith Rowe,Fulham FC,Midfield,Attacking Midfield,20000000.0,40000000.0
+392768,Callum Hudson-Odoi,Nottingham Forest,Attack,Left Winger,30000000.0,35000000.0
+392771,Ethan Ampadu,Leeds United,Midfield,Defensive Midfield,30000000.0,30000000.0
+392775,Ryan Sessegnon,Fulham FC,Defender,Left-Back,22000000.0,35000000.0
+393323,Brenden Aaronson,Leeds United,Midfield,Attacking Midfield,22000000.0,30000000.0
+394327,Boubacar Kamara,Aston Villa,Midfield,Defensive Midfield,40000000.0,40000000.0
+396174,Jimmy Dunne,Queens Park Rangers,Defender,Right-Back,5000000.0,5000000.0
+397033,Sandro Tonali,Newcastle United,Midfield,Defensive Midfield,80000000.0,80000000.0
+398065,Harvey Barnes,Newcastle United,Attack,Left Winger,32000000.0,35000000.0
+399434,Marcus Tavernier,AFC Bournemouth,Midfield,Attacking Midfield,25000000.0,25000000.0
+399776,Pau Torres,Aston Villa,Defender,Centre-Back,20000000.0,50000000.0
+400536,Mads Hermansen,West Ham United,Goalkeeper,Goalkeeper,15000000.0,18000000.0
+401173,Jadon Sancho,Aston Villa,Attack,Left Winger,18000000.0,130000000.0
+401320,Dara O'Shea,Ipswich Town,Defender,Centre-Back,16000000.0,16000000.0
+401356,Edson Álvarez,West Ham United,Midfield,Defensive Midfield,15000000.0,35000000.0
+403151,Robert Sánchez,Chelsea FC,Goalkeeper,Goalkeeper,22000000.0,32000000.0
+403898,Jordan Beyer,Burnley FC,Defender,Centre-Back,1500000.0,16000000.0
+404842,Vitaliy Mykolenko,Everton FC,Defender,Left-Back,25000000.0,28000000.0
+406556,Tom McGill,Brighton & Hove Albion,Goalkeeper,Goalkeeper,500000.0,600000.0
+406635,Phil Foden,Manchester City,Midfield,Attacking Midfield,70000000.0,150000000.0
+408872,Paul Smyth,Queens Park Rangers,Attack,Right Winger,800000.0,800000.0
+410225,Ismaïla Sarr,Crystal Palace,Attack,Right Winger,40000000.0,40000000.0
+410425,Yves Bissouma,Tottenham Hotspur,Midfield,Defensive Midfield,10000000.0,35000000.0
+410708,Pascal Struijk,Leeds United,Defender,Centre-Back,22000000.0,22000000.0
+411537,Zian Flemming,Burnley FC,Attack,Centre-Forward,12000000.0,12000000.0
+412616,Giorgi Chakvetadze,Watford FC,Midfield,Attacking Midfield,3500000.0,9000000.0
+413039,Bryan Mbeumo,Manchester United,Attack,Right Winger,75000000.0,80000000.0
+413220,James Justin,Leeds United,Defender,Right-Back,12000000.0,25000000.0
+413403,Ezri Konsa,Aston Villa,Defender,Centre-Back,40000000.0,40000000.0
+413507,Nikola Milenković,Nottingham Forest,Defender,Centre-Back,28000000.0,35000000.0
+415381,Mats Wieffer,Brighton & Hove Albion,Defender,Right-Back,25000000.0,30000000.0
+415912,Konstantinos Mavropanos,West Ham United,Defender,Centre-Back,18000000.0,20000000.0
+415970,Joe Worrall,Burnley FC,Defender,Centre-Back,2000000.0,12000000.0
+417346,Jack Harrison,Leeds United,Attack,Left Winger,6500000.0,28000000.0
+418560,Erling Haaland,Manchester City,Attack,Centre-Forward,200000000.0,200000000.0
+420002,Jean-Philippe Mateta,Crystal Palace,Attack,Centre-Forward,30000000.0,40000000.0
+420243,Jurriën Timber,Arsenal FC,Defender,Right-Back,70000000.0,70000000.0
+420808,George Hirst,Ipswich Town,Attack,Centre-Forward,10000000.0,10000000.0
+421637,Frank Onyeka,Brentford FC,Midfield,Central Midfield,8000000.0,10000000.0
+423440,Martín Zubimendi,Arsenal FC,Midfield,Defensive Midfield,75000000.0,80000000.0
+424015,Nathan Patterson,Everton FC,Defender,Right-Back,10000000.0,16000000.0
+425334,Matty Cash,Aston Villa,Defender,Right-Back,22000000.0,28000000.0
+425902,Ryan Yates,Nottingham Forest,Midfield,Central Midfield,7000000.0,13000000.0
+425918,Jakub Kiwior,Arsenal FC,Defender,Centre-Back,35000000.0,35000000.0
+426192,Ben Brereton Díaz,Southampton FC,Attack,Centre-Forward,5000000.0,16000000.0
+427568,Aaron Ramsdale,Newcastle United,Goalkeeper,Goalkeeper,12000000.0,40000000.0
+428016,Brandon Austin,Tottenham Hotspur,Goalkeeper,Goalkeeper,500000.0,600000.0
+428061,Riley McGree,Middlesbrough FC,Midfield,Central Midfield,3500000.0,4000000.0
+429014,Morgan Gibbs-White,Nottingham Forest,Midfield,Attacking Midfield,70000000.0,70000000.0
+429915,Maxim De Cuyper,Brighton & Hove Albion,Defender,Left-Back,22000000.0,22000000.0
+429983,Jørgen Strand Larsen,Wolverhampton Wanderers,Attack,Centre-Forward,40000000.0,45000000.0
+430310,Andrew Irving,West Ham United,Midfield,Central Midfield,4500000.0,5000000.0
+431755,Dejan Kulusevski,Tottenham Hotspur,Midfield,Attacking Midfield,17000000.0,60000000.0
+432164,Igor Jesus,Nottingham Forest,Attack,Centre-Forward,25000000.0,25000000.0
+432914,John Victor,Nottingham Forest,Goalkeeper,Goalkeeper,5000000.0,8000000.0
+433177,Bukayo Saka,Arsenal FC,Attack,Right Winger,110000000.0,150000000.0
+433183,Tommy Doyle,Wolverhampton Wanderers,Midfield,Central Midfield,7000000.0,10000000.0
+433188,Curtis Jones,Liverpool FC,Midfield,Central Midfield,35000000.0,50000000.0
+433991,Ethan Galbraith,Swansea City,Midfield,Central Midfield,2500000.0,2500000.0
+434224,Maxence Lacroix,Crystal Palace,Defender,Centre-Back,50000000.0,50000000.0
+434675,Cody Gakpo,Liverpool FC,Attack,Left Winger,60000000.0,70000000.0
+435062,Callum Styles,West Bromwich Albion,Defender,Left-Back,3000000.0,3500000.0
+435338,Gabriel,Arsenal FC,Defender,Centre-Back,75000000.0,75000000.0
+435648,Joshua Zirkzee,Manchester United,Attack,Centre-Forward,20000000.0,50000000.0
+438001,Santiago Bueno,Wolverhampton Wanderers,Defender,Centre-Back,10000000.0,10000000.0
+442248,Ethan Pinnock,Brentford FC,Defender,Centre-Back,3000000.0,15000000.0
+444208,Michael Obafemi,Burnley FC,Attack,Centre-Forward,600000.0,5000000.0
+444523,Lucas Paquetá,West Ham United,Midfield,Attacking Midfield,32000000.0,65000000.0
+445939,Omar Marmoush,Manchester City,Attack,Centre-Forward,50000000.0,75000000.0
+447661,Douglas Luiz,Nottingham Forest,Midfield,Central Midfield,18000000.0,70000000.0
+450050,Jean-Ricner Bellegarde,Wolverhampton Wanderers,Midfield,Central Midfield,16000000.0,18000000.0
+451276,Dominik Szoboszlai,Liverpool FC,Midfield,Attacking Midfield,100000000.0,100000000.0
+454576,Róbert Boženík,Stoke City,Attack,Centre-Forward,2500000.0,5000000.0
+455661,Nick Woltemade,Newcastle United,Attack,Centre-Forward,55000000.0,70000000.0
+456292,Ellery Balcombe,Brentford FC,Goalkeeper,Goalkeeper,400000.0,400000.0
+458178,Jack Taylor,Ipswich Town,Midfield,Central Midfield,3000000.0,3000000.0
+460939,Tijjani Reijnders,Manchester City,Midfield,Central Midfield,50000000.0,70000000.0
+461883,Calvin Bassey,Fulham FC,Defender,Centre-Back,28000000.0,28000000.0
+463603,Benoît Badiashile,Chelsea FC,Defender,Centre-Back,15000000.0,40000000.0
+463605,Bafodé Diakité,AFC Bournemouth,Defender,Centre-Back,25000000.0,35000000.0
+465555,Djordje Petrovic,AFC Bournemouth,Goalkeeper,Goalkeeper,28000000.0,28000000.0
+465717,Jayden Bogle,Leeds United,Defender,Right-Back,15000000.0,15000000.0
+466805,Nico González,Manchester City,Midfield,Defensive Midfield,40000000.0,45000000.0
+467623,Lyle Foster,Burnley FC,Attack,Centre-Forward,8000000.0,13000000.0
+468198,Joe Aribo,Southampton FC,Midfield,Central Midfield,1800000.0,15000000.0
+469050,Nathan Collins,Brentford FC,Defender,Centre-Back,30000000.0,35000000.0
+469781,Marcos Senesi,AFC Bournemouth,Defender,Centre-Back,25000000.0,25000000.0
+470607,Brennan Johnson,Tottenham Hotspur,Attack,Right Winger,30000000.0,50000000.0
+472423,Reece James,Chelsea FC,Defender,Right-Back,60000000.0,70000000.0
+473050,Kevin Schade,Brentford FC,Attack,Left Winger,35000000.0,35000000.0
+473169,Brian Brobbey,Sunderland AFC,Attack,Centre-Forward,30000000.0,35000000.0
+474701,Crysencio Summerville,West Ham United,Attack,Left Winger,35000000.0,35000000.0
+475188,Kiernan Dewsbury-Hall,Everton FC,Midfield,Central Midfield,35000000.0,35000000.0
+475411,Wesley Fofana,Chelsea FC,Defender,Centre-Back,28000000.0,65000000.0
+475416,Sorba Thomas,Stoke City,Attack,Left Winger,14000000.0,14000000.0
+475946,Anthony Patterson,Sunderland AFC,Goalkeeper,Goalkeeper,,
+475959,Josko Gvardiol,Manchester City,Defender,Centre-Back,70000000.0,80000000.0
+476701,Manuel Ugarte,Manchester United,Midfield,Defensive Midfield,25000000.0,60000000.0
+477758,Aaron Wan-Bissaka,West Ham United,Defender,Right-Back,15000000.0,40000000.0
+478573,Ryan Gravenberch,Liverpool FC,Midfield,Defensive Midfield,80000000.0,90000000.0
+479999,Eberechi Eze,Arsenal FC,Midfield,Attacking Midfield,65000000.0,65000000.0
+480723,Finn Azaz,Southampton FC,Midfield,Attacking Midfield,20000000.0,20000000.0
+480762,Lisandro Martínez,Manchester United,Defender,Centre-Back,40000000.0,50000000.0
+480987,Chris Mepham,West Bromwich Albion,Defender,Centre-Back,3000000.0,13000000.0
+482836,David Strelec,Middlesbrough FC,Attack,Centre-Forward,8000000.0,8000000.0
+483348,Djed Spence,Tottenham Hotspur,Defender,Left-Back,30000000.0,32000000.0
+484547,Jeremie Frimpong,Liverpool FC,Defender,Right-Back,35000000.0,50000000.0
+485583,Ki-Jana Hoever,Wolverhampton Wanderers,Defender,Right-Back,3500000.0,7000000.0
+485585,Ian Maatsen,Aston Villa,Defender,Left-Back,30000000.0,40000000.0
+485706,Amadou Onana,Aston Villa,Midfield,Defensive Midfield,45000000.0,55000000.0
+486049,Jérémy Doku,Manchester City,Attack,Left Winger,75000000.0,75000000.0
+486477,Edo Kayembe,Watford FC,Midfield,Central Midfield,4000000.0,5000000.0
+487417,Liam Millar,Hull City,Attack,Left Winger,1700000.0,3000000.0
+487465,Pedro Neto,Chelsea FC,Attack,Right Winger,60000000.0,60000000.0
+487969,Randal Kolo Muani,Tottenham Hotspur,Attack,Centre-Forward,20000000.0,80000000.0
+488362,Conor Gallagher,Tottenham Hotspur,Midfield,Central Midfield,32000000.0,50000000.0
+488935,Hákon Valdimarsson,Brentford FC,Goalkeeper,Goalkeeper,2500000.0,2500000.0
+489359,Ao Tanaka,Leeds United,Midfield,Central Midfield,13000000.0,13000000.0
+493003,Daniel Muñoz,Crystal Palace,Defender,Right-Back,22000000.0,27000000.0
+494237,Wilson Isidor,Sunderland AFC,Attack,Centre-Forward,18000000.0,18000000.0
+494880,Jorge Cuenca,Fulham FC,Defender,Centre-Back,8000000.0,8000000.0
+495666,William Saliba,Arsenal FC,Defender,Centre-Back,100000000.0,100000000.0
+496659,Ben Cabango,Swansea City,Defender,Centre-Back,9000000.0,13000000.0
+497291,Nicolás Domínguez,Nottingham Forest,Midfield,Central Midfield,15000000.0,18000000.0
+500689,Evann Guessand,Crystal Palace,Attack,Right Winger,25000000.0,30000000.0
+501743,Koki Saito,Queens Park Rangers,Attack,Left Winger,3200000.0,4000000.0
+502676,Giorgi Mamardashvili,Liverpool FC,Goalkeeper,Goalkeeper,28000000.0,45000000.0
+502821,Riccardo Calafiori,Arsenal FC,Defender,Left-Back,55000000.0,55000000.0
+503679,Rhys Williams,Liverpool FC,Defender,Centre-Back,500000.0,5000000.0
+503680,Neco Williams,Nottingham Forest,Defender,Left-Back,28000000.0,28000000.0
+503686,Dan Ballard,Sunderland AFC,Defender,Centre-Back,20000000.0,20000000.0
+503733,Anthony Gordon,Newcastle United,Attack,Left Winger,65000000.0,65000000.0
+503743,Morgan Rogers,Aston Villa,Midfield,Attacking Midfield,90000000.0,90000000.0
+503749,Jacob Ramsey,Newcastle United,Midfield,Central Midfield,35000000.0,42000000.0
+503765,James Hillson,Chelsea FC,Goalkeeper,Goalkeeper,,
+503795,Jeremy Ngakia,Watford FC,Defender,Right-Back,2200000.0,4000000.0
+503981,Tino Livramento,Newcastle United,Defender,Right-Back,45000000.0,45000000.0
+503987,Noni Madueke,Arsenal FC,Attack,Right Winger,50000000.0,50000000.0
+504849,Kaoru Mitoma,Brighton & Hove Albion,Attack,Left Winger,22000000.0,50000000.0
+505219,James Garner,Everton FC,Midfield,Defensive Midfield,45000000.0,45000000.0
+506942,Zan Vipotnik,Swansea City,Attack,Centre-Forward,22000000.0,22000000.0
+513968,Aidan Morris,Middlesbrough FC,Midfield,Central Midfield,10000000.0,10000000.0
+513970,Julián Araujo,AFC Bournemouth,Defender,Right-Back,8000000.0,10000000.0
+514285,Quilindschy Hartman,Burnley FC,Defender,Left-Back,16000000.0,23000000.0
+515544,Trai Hume,Sunderland AFC,Defender,Right-Back,22000000.0,22000000.0
+517894,Matheus Cunha,Manchester United,Attack,Centre-Forward,75000000.0,75000000.0
+518644,Largie Ramazani,Leeds United,Attack,Left Winger,8000000.0,10000000.0
+520624,Bruno Guimarães,Newcastle United,Midfield,Central Midfield,70000000.0,85000000.0
+521964,Malick Thiaw,Newcastle United,Defender,Centre-Back,45000000.0,45000000.0
+522784,Taty Castellanos,West Ham United,Attack,Centre-Forward,28000000.0,28000000.0
+525247,Maximilian Kilman,West Ham United,Defender,Centre-Back,13000000.0,38000000.0
+530813,Anis Mehmeti,Ipswich Town,Midfield,Attacking Midfield,,
+532776,Amine Adli,AFC Bournemouth,Attack,Left Winger,20000000.0,30000000.0
+534033,Alexis Mac Allister,Liverpool FC,Midfield,Central Midfield,70000000.0,100000000.0
+536835,Amad Diallo,Manchester United,Attack,Right Winger,45000000.0,50000000.0
+537860,Mykhaylo Mudryk,Chelsea FC,Attack,Left Winger,18000000.0,60000000.0
+538977,Georginio Rutter,Brighton & Hove Albion,Attack,Centre-Forward,30000000.0,32000000.0
+540941,Mikkel Damsgaard,Brentford FC,Midfield,Attacking Midfield,30000000.0,30000000.0
+541231,Sepp van den Berg,Brentford FC,Defender,Centre-Back,32000000.0,32000000.0
+542586,Illan Meslier,Leeds United,Goalkeeper,Goalkeeper,8000000.0,22000000.0
+543164,Rhys Norrington-Davies,Queens Park Rangers,Defender,Left-Back,2500000.0,3000000.0
+543387,Cheick Doucouré,Crystal Palace,Midfield,Defensive Midfield,10000000.0,35000000.0
+543499,Mohammed Kudus,Tottenham Hotspur,Attack,Right Winger,50000000.0,55000000.0
+546712,Anis Ben Slimane,Norwich City,Midfield,Attacking Midfield,2500000.0,3500000.0
+547039,Isaak Davies,Cardiff City,Attack,Left Winger,1000000.0,1500000.0
+548729,Zeki Amdouni,Burnley FC,Attack,Centre-Forward,7000000.0,15000000.0
+553875,Pedro Porro,Tottenham Hotspur,Defender,Right-Back,35000000.0,45000000.0
+555076,Romain Faivre,AFC Bournemouth,Midfield,Attacking Midfield,4000000.0,15000000.0
+556385,Destiny Udogie,Tottenham Hotspur,Defender,Left-Back,30000000.0,45000000.0
+557459,Micky van de Ven,Tottenham Hotspur,Defender,Centre-Back,50000000.0,65000000.0
+559130,Harrison Ashby,Newcastle United,Defender,Right-Back,1200000.0,1400000.0
+559263,Fábio Carvalho,Brentford FC,Midfield,Attacking Midfield,8000000.0,20000000.0
+559801,Niall Huggins,Sunderland AFC,Defender,Right-Back,200000.0,200000.0
+564529,Victor Kristiansen,Leicester City,Defender,Left-Back,9000000.0,16000000.0
+565093,Bart Verbruggen,Brighton & Hove Albion,Goalkeeper,Goalkeeper,40000000.0,40000000.0
+565822,Harvey Elliott,Liverpool FC,Midfield,Attacking Midfield,20000000.0,35000000.0
+566799,James Trafford,Manchester City,Goalkeeper,Goalkeeper,25000000.0,30000000.0
+567576,Elliot Anderson,Nottingham Forest,Midfield,Central Midfield,75000000.0,75000000.0
+568006,Dennis Cirkin,Sunderland AFC,Defender,Left-Back,6000000.0,8000000.0
+568177,Cole Palmer,Chelsea FC,Midfield,Attacking Midfield,100000000.0,130000000.0
+568559,Radu Drăgușin,Tottenham Hotspur,Defender,Centre-Back,16000000.0,25000000.0
+568693,Pape Matar Sarr,Tottenham Hotspur,Midfield,Central Midfield,30000000.0,45000000.0
+569663,Mathias Kvistgaarden,Norwich City,Attack,Centre-Forward,6000000.0,15000000.0
+570336,Dan Neil,Sunderland AFC,Midfield,Central Midfield,,
+571743,Armando Broja,Burnley FC,Attack,Centre-Forward,5000000.0,30000000.0
+574448,Harry Tyrer,Everton FC,Goalkeeper,Goalkeeper,,
+576314,Jan Paul van Hecke,Brighton & Hove Albion,Defender,Centre-Back,45000000.0,45000000.0
+578391,Rayan Aït-Nouri,Manchester City,Defender,Left-Back,40000000.0,40000000.0
+578539,Chris Richards,Crystal Palace,Defender,Centre-Back,28000000.0,28000000.0
+579295,Melker Widell,Swansea City,Midfield,Central Midfield,1800000.0,1800000.0
+581330,Eiran Cashin,Brighton & Hove Albion,Defender,Centre-Back,5000000.0,8000000.0
+582078,Will Dennis,AFC Bournemouth,Goalkeeper,Goalkeeper,350000.0,350000.0
+583189,Anthony Elanga,Newcastle United,Attack,Right Winger,32000000.0,55000000.0
+583199,James McAtee,Nottingham Forest,Midfield,Attacking Midfield,18000000.0,25000000.0
+583255,Antoine Semenyo,Manchester City,Attack,Right Winger,80000000.0,80000000.0
+583990,Owen Bevan,AFC Bournemouth,Defender,Centre-Back,,
+584769,Dwight McNeil,Everton FC,Attack,Left Winger,18000000.0,25000000.0
+585323,Filip Jørgensen,Chelsea FC,Goalkeeper,Goalkeeper,15000000.0,20000000.0
+585550,Gavin Bazunu,Southampton FC,Goalkeeper,Goalkeeper,8000000.0,18000000.0
+585769,George Campbell,West Bromwich Albion,Defender,Centre-Back,2000000.0,2000000.0
+587002,Myles Peart-Harris,Brentford FC,Midfield,Attacking Midfield,900000.0,1000000.0
+587222,Aune Heggebø,West Bromwich Albion,Attack,Centre-Forward,7000000.0,7000000.0
+591949,Aaron Hickey,Brentford FC,Defender,Right-Back,16000000.0,30000000.0
+595809,Beto,Everton FC,Attack,Centre-Forward,18000000.0,25000000.0
+598577,Florian Wirtz,Liverpool FC,Midfield,Attacking Midfield,100000000.0,140000000.0
+601883,Matheus Nunes,Manchester City,Defender,Right-Back,50000000.0,55000000.0
+605184,Jean-Clair Todibo,West Ham United,Defender,Centre-Back,22000000.0,35000000.0
+605426,Melker Ellborg,Sunderland AFC,Goalkeeper,Goalkeeper,3000000.0,3000000.0
+606718,Toti,Wolverhampton Wanderers,Defender,Centre-Back,18000000.0,28000000.0
+607223,Rayan Cherki,Manchester City,Midfield,Attacking Midfield,90000000.0,90000000.0
+607224,Hannibal,Burnley FC,Midfield,Attacking Midfield,15000000.0,16000000.0
+607226,Loum Tchaouna,Burnley FC,Attack,Right Winger,13000000.0,15000000.0
+608832,Merlin Röhl,Everton FC,Midfield,Attacking Midfield,16000000.0,18000000.0
+609556,William Osula,Newcastle United,Attack,Centre-Forward,28000000.0,28000000.0
+610581,Ali Al-Hamadi,Luton Town,Attack,Centre-Forward,1500000.0,2500000.0
+610849,Liam Delap,Chelsea FC,Attack,Centre-Forward,28000000.0,40000000.0
+611793,James Hill,AFC Bournemouth,Defender,Centre-Back,23000000.0,23000000.0
+612517,Bashir Humphreys,Burnley FC,Defender,Centre-Back,12000000.0,15000000.0
+612749,Isaac Price,West Bromwich Albion,Midfield,Central Midfield,12000000.0,12000000.0
+614258,Levi Colwill,Chelsea FC,Defender,Centre-Back,50000000.0,55000000.0
+614811,Joe White,Newcastle United,Midfield,Attacking Midfield,200000.0,300000.0
+615302,Mirko Topić,Norwich City,Midfield,Defensive Midfield,4000000.0,5000000.0
+617018,Marko Stamenić,Swansea City,Midfield,Central Midfield,3000000.0,5000000.0
+617755,Jenson Seelt,Sunderland AFC,Defender,Centre-Back,5000000.0,5000000.0
+620322,Malo Gusto,Chelsea FC,Defender,Right-Back,35000000.0,35000000.0
+621193,Kasey McAteer,Ipswich Town,Midfield,Right Midfield,10000000.0,12000000.0
+621997,Cieran Slicker,Ipswich Town,Goalkeeper,Goalkeeper,350000.0,350000.0
+623570,Iliman Ndiaye,Everton FC,Attack,Right Winger,55000000.0,55000000.0
+624258,Conor Bradley,Liverpool FC,Defender,Right-Back,25000000.0,30000000.0
+624946,Rumarn Burrell,Queens Park Rangers,Attack,Centre-Forward,6000000.0,6000000.0
+626474,Rubin Colwill,Cardiff City,Midfield,Attacking Midfield,2000000.0,2000000.0
+626724,João Pedro,Chelsea FC,Attack,Centre-Forward,80000000.0,80000000.0
+627248,Lewis Dobbin,Aston Villa,Attack,Left Winger,7000000.0,7000000.0
+627442,Benjamin Sesko,Manchester United,Attack,Centre-Forward,75000000.0,75000000.0
+627626,Wilfried Gnonto,Leeds United,Attack,Right Winger,16000000.0,22000000.0
+628451,Roméo Lavia,Chelsea FC,Midfield,Defensive Midfield,22000000.0,50000000.0
+633652,Calvin Ramsay,Liverpool FC,Defender,Right-Back,1500000.0,5000000.0
+633992,Enzo Le Fée,Sunderland AFC,Midfield,Central Midfield,28000000.0,28000000.0
+644401,Keane Lewis-Potter,Brentford FC,Midfield,Left Midfield,25000000.0,25000000.0
+645686,Lamare Bogarde,Aston Villa,Midfield,Defensive Midfield,18000000.0,18000000.0
+646353,Carl Rushworth,Brighton & Hove Albion,Goalkeeper,Goalkeeper,16000000.0,16000000.0
+646658,Aaron Ramsey,Burnley FC,Midfield,Attacking Midfield,6000000.0,15000000.0
+646750,Cristhian Mosquera,Arsenal FC,Defender,Centre-Back,40000000.0,40000000.0
+646991,Robin Roefs,Sunderland AFC,Goalkeeper,Goalkeeper,28000000.0,28000000.0
+648032,James Abankwah,Watford FC,Defender,Centre-Back,3500000.0,3500000.0
+648195,Enzo Fernández,Chelsea FC,Midfield,Central Midfield,90000000.0,90000000.0
+654412,Abdoullah Ba,Sunderland AFC,Midfield,Right Midfield,1500000.0,4000000.0
+654539,Adrien Truffert,AFC Bournemouth,Defender,Left-Back,30000000.0,30000000.0
+655488,Gabriel Martinelli,Arsenal FC,Attack,Left Winger,45000000.0,85000000.0
+655986,Reece Welch,Everton FC,Defender,Centre-Back,250000.0,700000.0
+656316,Gabriel Slonina,Chelsea FC,Goalkeeper,Goalkeeper,3000000.0,9000000.0
+658536,Simon Adingra,Sunderland AFC,Attack,Left Winger,22000000.0,30000000.0
+659813,Piero Hincapié,Arsenal FC,Defender,Centre-Back,50000000.0,50000000.0
+660768,Max Thompson,Newcastle United,Goalkeeper,Goalkeeper,,
+661053,Jarrad Branthwaite,Everton FC,Defender,Centre-Back,40000000.0,50000000.0
+661207,Oscar Bobb,Manchester City,Attack,Right Winger,28000000.0,30000000.0
+661208,Leo Hjelde,Sunderland AFC,Defender,Centre-Back,1500000.0,1500000.0
+661253,Hector Kyprianou,Watford FC,Midfield,Defensive Midfield,1500000.0,1500000.0
+661427,David Møller Wolfe,Wolverhampton Wanderers,Defender,Left-Back,8000000.0,12000000.0
+662744,Vicente Reyes,Norwich City,Goalkeeper,Goalkeeper,350000.0,350000.0
+663225,Tyler Onyango,Everton FC,Midfield,Central Midfield,350000.0,500000.0
+667121,Rodrigo Gomes,Wolverhampton Wanderers,Midfield,Left Midfield,15000000.0,15000000.0
+667287,Yasin Ayari,Brighton & Hove Albion,Midfield,Central Midfield,35000000.0,35000000.0
+667490,Ronnie Hollingshead,Aston Villa,Goalkeeper,Goalkeeper,,
+667498,Ben Hammond,Nottingham Forest,Midfield,Central Midfield,,
+668557,Maksym Taloverov,Stoke City,Defender,Centre-Back,2000000.0,3000000.0
+670688,Youssef Chermiti,Everton FC,Attack,Centre-Forward,15000000.0,15000000.0
+670717,Dário Essugo,Chelsea FC,Midfield,Defensive Midfield,15000000.0,20000000.0
+670858,Lewis Hall,Newcastle United,Defender,Left-Back,40000000.0,40000000.0
+670860,James Beadle,Brighton & Hove Albion,Goalkeeper,Goalkeeper,6000000.0,6000000.0
+670882,Jamie Gittens,Chelsea FC,Attack,Left Winger,30000000.0,50000000.0
+671108,Kota Takai,Tottenham Hotspur,Defender,Centre-Back,5000000.0,5000000.0
+673492,Morato,Nottingham Forest,Defender,Centre-Back,14000000.0,15000000.0
+674054,Leo Walta,Swansea City,Midfield,Attacking Midfield,3000000.0,3500000.0
+680531,Sam Silvera,Middlesbrough FC,Attack,Left Winger,1500000.0,1500000.0
+683620,Antoni Milambo,Brentford FC,Midfield,Attacking Midfield,15000000.0,20000000.0
+684210,Jaidon Anthony,Burnley FC,Attack,Left Winger,20000000.0,20000000.0
+687626,Moisés Caicedo,Chelsea FC,Midfield,Defensive Midfield,100000000.0,110000000.0
+689637,Chadi Riad,Crystal Palace,Defender,Centre-Back,15000000.0,15000000.0
+696181,Romaine Mundle,Sunderland AFC,Attack,Left Winger,7000000.0,8000000.0
+696589,Tim Iroegbunam,Everton FC,Midfield,Central Midfield,18000000.0,18000000.0
+697280,George Earthy,West Ham United,Midfield,Attacking Midfield,1000000.0,1000000.0
+698164,Freddie Potts,West Ham United,Midfield,Defensive Midfield,10000000.0,10000000.0
+698415,José Córdoba,Norwich City,Defender,Centre-Back,5000000.0,5000000.0
+698678,Hugo Bueno,Wolverhampton Wanderers,Defender,Left-Back,12000000.0,12000000.0
+700461,Alfie Brooks,Wolverhampton Wanderers,Goalkeeper,Goalkeeper,,
+701021,Ruairi McConville,Norwich City,Defender,Centre-Back,3000000.0,3000000.0
+701057,Rico Lewis,Manchester City,Defender,Right-Back,28000000.0,40000000.0
+706815,Harvey Davies,Liverpool FC,Goalkeeper,Goalkeeper,500000.0,500000.0
+706889,Jaydon Banel,Burnley FC,Attack,Left Winger,1000000.0,1200000.0
+706968,Ji-sung Eom,Swansea City,Attack,Left Winger,1800000.0,1800000.0
+708072,Nicolò Savona,Nottingham Forest,Defender,Right-Back,15000000.0,18000000.0
+709726,Hugo Ekitiké,Liverpool FC,Attack,Centre-Forward,80000000.0,90000000.0
+711337,Evanilson,AFC Bournemouth,Attack,Centre-Forward,35000000.0,40000000.0
+711544,Jake O'Brien,Everton FC,Defender,Right-Back,18000000.0,18000000.0
+711999,Lesley Ugochukwu,Burnley FC,Midfield,Defensive Midfield,22000000.0,25000000.0
+712181,James Wright,Aston Villa,Goalkeeper,Goalkeeper,200000.0,200000.0
+715558,Marcelino Núñez,Ipswich Town,Midfield,Central Midfield,14000000.0,14000000.0
+716276,Yerson Mosquera,Wolverhampton Wanderers,Defender,Centre-Back,12000000.0,12000000.0
+717411,Yegor Yarmolyuk,Brentford FC,Midfield,Central Midfield,32000000.0,32000000.0
+719673,Ben Gannon-Doak,Liverpool FC,Attack,Right Winger,15000000.0,18000000.0
+724041,Enock Agyei,Burnley FC,Attack,Right Winger,800000.0,800000.0
+724536,Josh Keeley,Luton Town,Goalkeeper,Goalkeeper,800000.0,800000.0
+724540,Bosun Lawal,Stoke City,Defender,Centre-Back,3000000.0,3000000.0
+724783,Tawanda Chirewa,Wolverhampton Wanderers,Midfield,Attacking Midfield,450000.0,500000.0
+725912,Antonín Kinský,Tottenham Hotspur,Goalkeeper,Goalkeeper,15000000.0,15000000.0
+727089,Noah Sadiki,Sunderland AFC,Midfield,Central Midfield,35000000.0,35000000.0
+730861,Milos Kerkez,Liverpool FC,Defender,Left-Back,35000000.0,45000000.0
+730893,Tyrick Mitchell,Crystal Palace,Defender,Left-Back,25000000.0,28000000.0
+731466,Teddy Sharman-Lowe,Chelsea FC,Goalkeeper,Goalkeeper,500000.0,550000.0
+732119,Kaide Gordon,Liverpool FC,Attack,Right Winger,1200000.0,1500000.0
+733314,James Carragher,Wigan Athletic,Defender,Centre-Back,250000.0,250000.0
+735570,João Gomes,Wolverhampton Wanderers,Midfield,Central Midfield,40000000.0,40000000.0
+735571,Rodrigo Muniz,Fulham FC,Attack,Centre-Forward,20000000.0,25000000.0
+739443,Igor Thiago,Brentford FC,Attack,Centre-Forward,65000000.0,65000000.0
+741229,Rocco Vata,Watford FC,Attack,Left Winger,1800000.0,1800000.0
+741236,Matthew Cox,Brentford FC,Goalkeeper,Goalkeeper,700000.0,800000.0
+741238,Omari Hutchinson,Nottingham Forest,Midfield,Attacking Midfield,30000000.0,35000000.0
+743384,Chemsdine Talbi,Sunderland AFC,Attack,Right Winger,25000000.0,25000000.0
+743413,Nico O'Reilly,Manchester City,Defender,Left-Back,70000000.0,70000000.0
+743498,Wilson Odobert,Tottenham Hotspur,Attack,Left Winger,18000000.0,22000000.0
+743591,Savinho,Manchester City,Attack,Left Winger,35000000.0,55000000.0
+743600,Andrey Santos,Chelsea FC,Midfield,Central Midfield,40000000.0,45000000.0
+744149,Adam Wharton,Crystal Palace,Midfield,Defensive Midfield,70000000.0,70000000.0
+745181,Soungoutou Magassa,West Ham United,Midfield,Defensive Midfield,17000000.0,17000000.0
+746833,Caleb Wiley,Chelsea FC,Defender,Left-Back,8000000.0,8000000.0
+747009,Justin Devenny,Crystal Palace,Midfield,Attacking Midfield,12000000.0,12000000.0
+747598,Elijah Campbell,Everton FC,Defender,Centre-Back,200000.0,200000.0
+747950,Alfie McNally,Fulham FC,Goalkeeper,Goalkeeper,,
+747951,Shea Charles,Southampton FC,Midfield,Defensive Midfield,15000000.0,15000000.0
+748319,Carlos Alcaraz,Everton FC,Midfield,Central Midfield,15000000.0,15000000.0
+763079,Abdukodir Khusanov,Manchester City,Defender,Centre-Back,50000000.0,50000000.0
+800176,André,Wolverhampton Wanderers,Midfield,Defensive Midfield,25000000.0,28000000.0
+801426,Tommy Conway,Middlesbrough FC,Attack,Centre-Forward,14000000.0,14000000.0
+801734,Mathys Tel,Tottenham Hotspur,Attack,Centre-Forward,22000000.0,50000000.0
+801989,Tammer Bany,West Bromwich Albion,Attack,Centre-Forward,250000.0,500000.0
+811779,Alejandro Garnacho,Chelsea FC,Attack,Left Winger,28000000.0,50000000.0
+813142,Temple Ojinnaka,Wolverhampton Wanderers,Defender,Centre-Back,,
+817612,Luke Harris,Fulham FC,Midfield,Attacking Midfield,900000.0,1000000.0
+817665,Pablo,West Ham United,Attack,Centre-Forward,18000000.0,18000000.0
+820374,Kobbie Mainoo,Manchester United,Midfield,Central Midfield,70000000.0,70000000.0
+821522,Alfie Pond,Wolverhampton Wanderers,Defender,Centre-Back,200000.0,250000.0
+823231,Dango Ouattara,Brentford FC,Attack,Right Winger,35000000.0,35000000.0
+823486,Michael Kayode,Brentford FC,Defender,Right-Back,40000000.0,40000000.0
+827435,Max Merrick,Chelsea FC,Goalkeeper,Goalkeeper,,
+829299,Max Weiß,Burnley FC,Goalkeeper,Goalkeeper,4000000.0,4000000.0
+837334,Joel Colwill,Cardiff City,Midfield,Attacking Midfield,900000.0,900000.0
+842341,Maxime Estève,Burnley FC,Defender,Centre-Back,28000000.0,28000000.0
+843595,Max Alleyne,Manchester City,Defender,Centre-Back,8000000.0,8000000.0
+843597,Louie Copley,Arsenal FC,Midfield,Central Midfield,,
+845289,James McConnell,Liverpool FC,Midfield,Defensive Midfield,2000000.0,2000000.0
+845809,Lewis Orford,West Ham United,Midfield,Central Midfield,300000.0,400000.0
+848437,Harrison Dudziak,Arsenal FC,Midfield,Attacking Midfield,,
+848439,Finlay Herrick,West Ham United,Goalkeeper,Goalkeeper,,
+848509,Jackson Tchatchoua,Wolverhampton Wanderers,Defender,Right-Back,12000000.0,12000000.0
+848753,Tommy Setford,Arsenal FC,Goalkeeper,Goalkeeper,500000.0,500000.0
+854721,Ben Winterburn,AFC Bournemouth,Midfield,Defensive Midfield,450000.0,500000.0
+855256,Alex Scott,AFC Bournemouth,Midfield,Central Midfield,50000000.0,50000000.0
+855282,Aaron Bott,Nottingham Forest,Goalkeeper,Goalkeeper,,
+857792,Ted Curd,Chelsea FC,Goalkeeper,Goalkeeper,,
+859951,Ashley Phillips,Tottenham Hotspur,Defender,Centre-Back,7000000.0,7000000.0
+860078,Kaden Rodney,Crystal Palace,Midfield,Defensive Midfield,200000.0,250000.0
+861577,Tommy Pilling,Liverpool FC,Midfield,Central Midfield,,
+862109,Danny Imray,Crystal Palace,Defender,Right-Back,,
+863741,Nathan Fraser,Wolverhampton Wanderers,Attack,Centre-Forward,600000.0,1000000.0
+864121,Abdul Fatawu,Leicester City,Attack,Right Winger,20000000.0,20000000.0
+864799,Stefan Bajcetic,Liverpool FC,Midfield,Defensive Midfield,4000000.0,13000000.0
+865993,David Ozoh,Crystal Palace,Midfield,Defensive Midfield,2200000.0,2200000.0
+866246,Lucas Bergvall,Tottenham Hotspur,Midfield,Central Midfield,35000000.0,40000000.0
+866655,Tyler Dibling,Everton FC,Attack,Right Winger,17000000.0,35000000.0
+867688,Jack Hinshelwood,Brighton & Hove Albion,Midfield,Defensive Midfield,28000000.0,28000000.0
+874538,Ryan Trevitt,Brentford FC,Midfield,Central Midfield,275000.0,275000.0
+874902,Travis Patterson,Aston Villa,Defender,Left-Back,,
+876631,Habib Diarra,Sunderland AFC,Midfield,Central Midfield,35000000.0,35000000.0
+878150,Amario Cozier-Duberry,Brighton & Hove Albion,Attack,Right Winger,5000000.0,5000000.0
+880245,Mateus Fernandes,West Ham United,Midfield,Central Midfield,50000000.0,50000000.0
+882172,Rio Kyerematen,Tottenham Hotspur,Midfield,Central Midfield,,
+883539,Charlie Crew,Leeds United,Midfield,Defensive Midfield,150000.0,150000.0
+887433,Kadan Young,Aston Villa,Attack,Left Winger,200000.0,300000.0
+888637,Luca Gunter,Tottenham Hotspur,Goalkeeper,Goalkeeper,,
+890721,Myles Lewis-Skelly,Arsenal FC,Defender,Left-Back,45000000.0,45000000.0
+892160,Luka Vuskovic,Tottenham Hotspur,Defender,Centre-Back,60000000.0,60000000.0
+900601,Alex Murphy,Newcastle United,Defender,Left-Back,1500000.0,1500000.0
+904802,Jorrel Hato,Chelsea FC,Defender,Left-Back,40000000.0,40000000.0
+907218,Riley Owen,Brentford FC,Midfield,Central Midfield,,
+910905,Mamadou Sarr,Chelsea FC,Defender,Centre-Back,22000000.0,25000000.0
+911424,Tyler Fredricson,Manchester United,Defender,Centre-Back,3000000.0,3000000.0
+911736,Sverre Nypan,Manchester City,Midfield,Central Midfield,13000000.0,15000000.0
+912081,Jun-ho Bae,Stoke City,Midfield,Attacking Midfield,4000000.0,4000000.0
+914269,Nehemiah Oriola,Brighton & Hove Albion,Attack,Left Winger,,
+920005,Jackson Izquierdo,Crystal Palace,Goalkeeper,Goalkeeper,,
+921662,Charlie Tasker,Brighton & Hove Albion,Defender,Right-Back,200000.0,200000.0
+922461,Wellity Lucky,Liverpool FC,Defender,Centre-Back,,
+922462,Lewis Koumas,Hull City,Attack,Left Winger,4000000.0,4000000.0
+922463,Ben Middlemas,Sunderland AFC,Midfield,Central Midfield,,
+922563,Oliver Scarles,West Ham United,Defender,Left-Back,10000000.0,10000000.0
+922693,Archie Gray,Tottenham Hotspur,Midfield,Defensive Midfield,35000000.0,38000000.0
+922769,Lewis Miley,Newcastle United,Midfield,Central Midfield,25000000.0,25000000.0
+923831,Leny Yoro,Manchester United,Defender,Centre-Back,50000000.0,55000000.0
+925092,Justin Hanks,Nottingham Forest,Defender,Centre-Back,,
+925093,Jack Thompson,Nottingham Forest,Defender,Centre-Back,,
+926309,Shea Lacey,Manchester United,Attack,Right Winger,,
+926952,Patrick Dorgu,Manchester United,Attack,Left Winger,35000000.0,35000000.0
+927768,Lucas Pires,Burnley FC,Defender,Left-Back,4000000.0,5000000.0
+933017,Zach Abbott,Nottingham Forest,Defender,Centre-Back,4000000.0,4000000.0
+933018,Tom Watson,Brighton & Hove Albion,Attack,Left Winger,7000000.0,10000000.0
+933215,Ármin Pécsi,Liverpool FC,Goalkeeper,Goalkeeper,,
+936237,Yu Hirakawa,Hull City,Attack,Right Winger,1000000.0,1000000.0
+936874,Tyrique George,Chelsea FC,Attack,Left Winger,20000000.0,22000000.0
+936901,Dominic Sadi,AFC Bournemouth,Attack,Right Winger,800000.0,800000.0
+937840,Harrison Jones,Sunderland AFC,Midfield,Attacking Midfield,150000.0,150000.0
+937941,Thierno Barry,Everton FC,Attack,Centre-Forward,30000000.0,30000000.0
+938146,Adam Aznou,Everton FC,Defender,Left-Back,6000000.0,7000000.0
+938158,Marc Guiu,Chelsea FC,Attack,Centre-Forward,12000000.0,12000000.0
+939290,Jayden Danns,Liverpool FC,Attack,Centre-Forward,800000.0,1000000.0
+940858,Leo Shahar,Newcastle United,Defender,Right-Back,,
+940915,Alexéi Rojas,Arsenal FC,Goalkeeper,Goalkeeper,250000.0,400000.0
+944140,Trent Koné-Doherty,Liverpool FC,Attack,Left Winger,600000.0,600000.0
+947407,Michael Laffey,Liverpool FC,Midfield,Defensive Midfield,,
+947411,Chris Rigg,Sunderland AFC,Midfield,Attacking Midfield,25000000.0,25000000.0
+948915,Murray Campbell,Burnley FC,Defender,Centre-Back,,
+950091,Stefanos Tzimas,Brighton & Hove Albion,Attack,Centre-Forward,18000000.0,22000000.0
+953135,Callum Marshall,West Ham United,Attack,Centre-Forward,2000000.0,2000000.0
+953438,Keyrol Figueroa,Liverpool FC,Attack,Centre-Forward,,
+953933,Jack Moorhouse,Manchester United,Midfield,Central Midfield,100000.0,100000.0
+954104,Jayden Meghoma,Brentford FC,Defender,Left-Back,2000000.0,2000000.0
+954105,Jamaldeen Jimoh-Aloba,Aston Villa,Midfield,Attacking Midfield,300000.0,300000.0
+955357,Junior Kroupi,AFC Bournemouth,Attack,Centre-Forward,70000000.0,70000000.0
+956920,Nestory Irankunda,Watford FC,Attack,Right Winger,8000000.0,8000000.0
+961833,Jaden Heskey,Manchester City,Midfield,Central Midfield,,
+964554,Josh Nichols,Arsenal FC,Defender,Right-Back,,
+967319,Romain Esse,Crystal Palace,Attack,Right Winger,10000000.0,12000000.0
+967342,Joshua Stephenson,Brentford FC,Defender,Centre-Back,,
+967346,Eliezer Mayenda,Sunderland AFC,Attack,Centre-Forward,16000000.0,18000000.0
+973085,Carlos Baleba,Brighton & Hove Albion,Midfield,Defensive Midfield,55000000.0,60000000.0
+978668,Joe Knight,Brighton & Hove Albion,Midfield,Central Midfield,100000.0,100000.0
+980343,Sam Chambers,Leeds United,Midfield,Attacking Midfield,,
+982097,Shumaira Mheuka,Chelsea FC,Attack,Centre-Forward,800000.0,800000.0
+983248,Callan McKenna,AFC Bournemouth,Goalkeeper,Goalkeeper,500000.0,600000.0
+983989,Facundo Buonanotte,Chelsea FC,Midfield,Attacking Midfield,12000000.0,22000000.0
+984096,Jair Cunha,Nottingham Forest,Defender,Centre-Back,15000000.0,15000000.0
+984593,Triston Rowe,Aston Villa,Defender,Right-Back,500000.0,500000.0
+985535,Kian Noble,Manchester City,Defender,Centre-Back,,
+985546,Callum Olusesi,Tottenham Hotspur,Midfield,Central Midfield,500000.0,500000.0
+987074,Dylan Lawlor,Cardiff City,Defender,Centre-Back,1800000.0,1800000.0
+989112,Veljko Milosavljevic,AFC Bournemouth,Defender,Centre-Back,20000000.0,20000000.0
+990997,Jenson Jones,Sunderland AFC,Defender,Right-Back,,
+991800,Luís Guilherme,West Ham United,Attack,Right Winger,12000000.0,24000000.0
+994594,Keehan Willows,Nottingham Forest,Goalkeeper,Goalkeeper,,
+994604,Matai Akinmboni,AFC Bournemouth,Defender,Centre-Back,1000000.0,1000000.0
+995642,Ali Ahmed,Norwich City,Midfield,Left Midfield,,
+995863,Archie Whitehall,Nottingham Forest,Midfield,Central Midfield,,
+996897,Diego Gómez,Brighton & Hove Albion,Midfield,Central Midfield,25000000.0,25000000.0
+998101,Alex Tóth,AFC Bournemouth,Midfield,Central Midfield,12000000.0,12000000.0
+999743,James Rowswell,Tottenham Hotspur,Defender,Centre-Back,,
+1004203,Keiber Lamadrid,West Ham United,Attack,Left Winger,1200000.0,1200000.0
+1004679,Zach Marsh,Crystal Palace,Attack,Centre-Forward,,
+1004708,Josh Acheampong,Chelsea FC,Defender,Right-Back,25000000.0,25000000.0
+1004709,Sam Proctor,Aston Villa,Goalkeeper,Goalkeeper,,
+1005583,Alysson,Aston Villa,Attack,Right Winger,10000000.0,10000000.0
+1005649,Murillo,Nottingham Forest,Defender,Centre-Back,50000000.0,55000000.0
+1005855,Ronan Kpakio,Cardiff City,Defender,Right-Back,1200000.0,1200000.0
+1006411,Jaydee Canvot,Crystal Palace,Defender,Centre-Back,28000000.0,28000000.0
+1007720,Tyler Bindon,Sheffield United,Defender,Centre-Back,3500000.0,3500000.0
+1008162,Conor McManus,Brentford FC,Defender,Left-Back,,
+1008553,Julian Eyestone,Brentford FC,Goalkeeper,Goalkeeper,,
+1009658,Julio Soler,AFC Bournemouth,Defender,Left-Back,8000000.0,8000000.0
+1011131,Josh King,Fulham FC,Midfield,Attacking Midfield,25000000.0,25000000.0
+1011132,Carter Pinnington,Liverpool FC,Defender,Centre-Back,,
+1011139,Jaden Dixon,Arsenal FC,Defender,Centre-Back,,
+1011140,Jack Fletcher,Manchester United,Midfield,Attacking Midfield,1000000.0,1000000.0
+1011659,Rhys Chadwick,Leeds United,Midfield,Defensive Midfield,,
+1012534,Yankuba Minteh,Brighton & Hove Albion,Attack,Right Winger,45000000.0,45000000.0
+1012564,Rayan,AFC Bournemouth,Attack,Right Winger,60000000.0,60000000.0
+1015619,Ahmed Abdullahi,Sunderland AFC,Attack,Centre-Forward,800000.0,1000000.0
+1018716,Callum Bates,Everton FC,Midfield,Central Midfield,,
+1018830,Jack Whittaker,Sunderland AFC,Midfield,Attacking Midfield,,
+1018837,Jaydon Jones,Sunderland AFC,Midfield,Central Midfield,,
+1019169,Adam Harrison,Newcastle United,Goalkeeper,Goalkeeper,100000.0,100000.0
+1019170,Aidan Harris,Newcastle United,Goalkeeper,Goalkeeper,200000.0,200000.0
+1023191,George Hemmings,Aston Villa,Midfield,Central Midfield,,
+1026524,Sam Amissah,Fulham FC,Defender,Centre-Back,,
+1033103,Charlie Gray,Manchester City,Midfield,Defensive Midfield,,
+1041600,James Wilson,Tottenham Hotspur,Attack,Centre-Forward,1200000.0,1200000.0
+1042886,Chido Obi,Manchester United,Attack,Centre-Forward,5000000.0,5000000.0
+1044516,Ethan Sutherland,Wolverhampton Wanderers,Midfield,Left Midfield,,
+1045118,George King,Crystal Palace,Defender,Centre-Back,,
+1045123,Trey Nyoni,Liverpool FC,Midfield,Central Midfield,8000000.0,8000000.0
+1047257,Rio Cardines,Crystal Palace,Defender,Left-Back,300000.0,300000.0
+1047261,Caleb Kporha,Crystal Palace,Defender,Right-Back,1000000.0,1000000.0
+1047280,Divine Mukasa,Manchester City,Midfield,Attacking Midfield,,
+1047345,Yusuf Akhamrich,Tottenham Hotspur,Attack,Right Winger,,
+1047506,Jimmy Sinclair,Nottingham Forest,Midfield,Right Midfield,,
+1049020,Stephen Mfuni,Manchester City,Defender,Centre-Back,,
+1049905,Aidan Borland,Aston Villa,Midfield,Central Midfield,,
+1049911,Tyler Fletcher,Manchester United,Midfield,Central Midfield,,
+1052871,Zyan Blake,Nottingham Forest,Attack,Left Winger,,
+1055345,Kieran Morrison,Liverpool FC,Attack,Right Winger,,
+1056437,Reigan Heskey,Manchester City,Attack,Left Winger,,
+1056993,Estêvão,Chelsea FC,Attack,Right Winger,80000000.0,80000000.0
+1060087,Charalampos Kostoulas,Brighton & Hove Albion,Attack,Centre-Forward,25000000.0,25000000.0
+1060740,Enso González,Wolverhampton Wanderers,Attack,Left Winger,2500000.0,4000000.0
+1063329,Andrés García,Aston Villa,Defender,Right-Back,6000000.0,7000000.0
+1065181,Alfie Cresswell,Leeds United,Midfield,Central Midfield,,
+1065227,Tom Edozie,Wolverhampton Wanderers,Attack,Right Winger,,
+1067168,Harry Howell,Brighton & Hove Albion,Midfield,Attacking Midfield,300000.0,300000.0
+1069512,Jonah Kusi-Asare,Fulham FC,Attack,Centre-Forward,3000000.0,4000000.0
+1071818,Sean Neave,Newcastle United,Attack,Centre-Forward,,
+1071819,Ollie Harrison,Chelsea FC,Midfield,Defensive Midfield,300000.0,300000.0
+1078156,Kaden Braithwaite,Manchester City,Defender,Centre-Back,,
+1078158,Seth Ridgeon,Fulham FC,Midfield,Central Midfield,,
+1078159,Ife Ibrahim,Arsenal FC,Midfield,Defensive Midfield,,
+1078163,Ayden Heaven,Manchester United,Defender,Centre-Back,30000000.0,30000000.0
+1079078,Timur Tuterov,Sunderland AFC,Attack,Left Winger,,
+1081155,Saheed Olagunju,Wolverhampton Wanderers,Defender,Centre-Back,,
+1081995,Mohamadou Kanté,West Ham United,Midfield,Defensive Midfield,1000000.0,1000000.0
+1083691,Luke Rawlings,Wolverhampton Wanderers,Midfield,Defensive Midfield,,
+1085591,Bendito Mantato,Manchester United,Attack,Right Winger,400000.0,400000.0
+1086258,Souza,Tottenham Hotspur,Defender,Left-Back,12000000.0,12000000.0
+1086375,Gustavo Nunes,Brentford FC,Attack,Left Winger,,
+1086619,Giovanni Leoni,Liverpool FC,Defender,Centre-Back,25000000.0,25000000.0
+1089802,Remy Rees-Dottin,AFC Bournemouth,Attack,Centre-Forward,300000.0,300000.0
+1091562,Romelle Donovan,Brentford FC,Attack,Right Winger,3500000.0,3500000.0
+1092671,Marley Leuluai,Burnley FC,Midfield,Defensive Midfield,,
+1095369,Khari Ranson,Arsenal FC,Goalkeeper,Goalkeeper,,
+1107726,Ezra Mayers,West Ham United,Defender,Centre-Back,2000000.0,2000000.0
+1107733,Harrison Armstrong,Everton FC,Midfield,Central Midfield,12000000.0,12000000.0
+1108049,Amara Nallo,Liverpool FC,Defender,Centre-Back,1000000.0,1000000.0
+1108464,Reggie Walsh,Chelsea FC,Midfield,Attacking Midfield,500000.0,500000.0
+1108465,Malachi Hardy,Tottenham Hotspur,Defender,Centre-Back,,
+1108466,Rio Ngumoha,Liverpool FC,Attack,Left Winger,30000000.0,30000000.0
+1108471,Landon Emenalo,Chelsea FC,Defender,Left-Back,,
+1108475,Luca Williams-Barnett,Tottenham Hotspur,Midfield,Attacking Midfield,,
+1108476,Harry Gray,Leeds United,Attack,Centre-Forward,,
+1108668,Airidas Golambeckis,West Ham United,Defender,Centre-Back,,
+1111589,El Hadji Malick Diouf,West Ham United,Defender,Left-Back,28000000.0,28000000.0
+1120418,Freddie Simmonds,Brighton & Hove Albion,Defender,Centre-Back,,
+1122308,Jayden Lienou,Leeds United,Defender,Left-Back,,
+1122668,Charlie Stevens,AFC Bournemouth,Midfield,Defensive Midfield,,
+1122712,Braiden Graham,Everton FC,Attack,Centre-Forward,,
+1130022,Kornel Misciur,Liverpool FC,Goalkeeper,Goalkeeper,,
+1131945,TJ Carroll,Aston Villa,Defender,Centre-Back,,
+1131973,Jack Porter,Arsenal FC,Goalkeeper,Goalkeeper,300000.0,400000.0
+1134717,Seung-soo Park,Newcastle United,Attack,Left Winger,,
+1135611,Jesse Derry,Chelsea FC,Attack,Left Winger,,
+1138200,Joshua Ajala,West Ham United,Attack,Centre-Forward,,
+1141628,Yunus Konak,Brentford FC,Midfield,Defensive Midfield,3500000.0,4500000.0
+1144158,Benjamin Arthur,Brentford FC,Defender,Centre-Back,100000.0,100000.0
+1145455,Nils Ramming,Brighton & Hove Albion,Goalkeeper,Goalkeeper,500000.0,500000.0
+1146664,Sam Alabi,Newcastle United,Midfield,Central Midfield,,
+1147384,Ellis Clark,Burnley FC,Midfield,Central Midfield,,
+1160291,Josh Gracey,Wolverhampton Wanderers,Goalkeeper,Goalkeeper,,
+1165131,Kian McMahon-Brown,Burnley FC,Attack,Right Winger,,
+1170892,Finn Geragusyan,Sunderland AFC,Attack,Centre-Forward,,
+1172138,Malik Olayiwola,Everton FC,Midfield,Central Midfield,,
+1172646,Ben Casey,Crystal Palace,Attack,Centre-Forward,,
+1178758,Malick Yalcouyé,Brighton & Hove Albion,Midfield,Central Midfield,12000000.0,17000000.0
+1180733,Ceadach O'Neill,Arsenal FC,Attack,Centre-Forward,,
+1184840,Jim Thwaites,Manchester United,Midfield,Defensive Midfield,,
+1184841,Godwill Kukonki,Manchester United,Defender,Centre-Back,,
+1187629,Max Dowman,Arsenal FC,Attack,Right Winger,30000000.0,30000000.0
+1187640,Ryan McAidoo,Manchester City,Attack,Right Winger,,
+1196272,Jun'ai Byfield,Tottenham Hotspur,Defender,Centre-Back,,
+1202361,Bradley Burrowes,Aston Villa,Attack,Right Winger,2000000.0,2000000.0
+1202376,Brandon Pouani,Burnley FC,Attack,Left Winger,,
+1210923,Tyrone Samba,Manchester City,Attack,Left Winger,,
+1211262,Ollie Shield,Brentford FC,Defender,Right-Back,,
+1214634,Oliver Pimlott,Burnley FC,Defender,Left-Back,,
+1217886,Rhys Oakley,Aston Villa,Goalkeeper,Goalkeeper,,
+1230661,Mateus Mané,Wolverhampton Wanderers,Midfield,Attacking Midfield,20000000.0,20000000.0
+1237740,Andre Harriman-Annous,Arsenal FC,Attack,Centre-Forward,,
+1250269,Brando Bailey-Joseph,Arsenal FC,Attack,Left Winger,,
+1255573,Ryan Kavuma-McQueen,Chelsea FC,Attack,Right Winger,,
+1255575,Tynan Thompson,Tottenham Hotspur,Attack,Left Winger,,
+1263738,Charlie Holland,Chelsea FC,Midfield,Defensive Midfield,,
+1263739,Floyd Samba,Manchester City,Midfield,Central Midfield,,
+1283997,Diego León,Manchester United,Defender,Left-Back,4000000.0,4000000.0
+1285021,Dean Benamar,Crystal Palace,Defender,Left-Back,,
+1287035,Mohamed Koné,Aston Villa,Midfield,Central Midfield,,
+1294399,Marli Salmon,Arsenal FC,Defender,Centre-Back,,
+1300041,Leon Routh,Aston Villa,Defender,Centre-Back,,
+1303354,Tye Hall,Tottenham Hotspur,Midfield,Central Midfield,,
+1322090,Jocelin Ta Bi,Sunderland AFC,Attack,Right Winger,2500000.0,3000000.0
+1323654,Malcom Dacosta González,AFC Bournemouth,Midfield,Defensive Midfield,,
+1328146,Lamin Sillah,Nottingham Forest,Attack,Centre-Forward,,
+1336100,Mathis Eboué,Chelsea FC,Attack,Left Winger,,
+1340428,Will Wright,Liverpool FC,Attack,Centre-Forward,,
+1348941,Joél Drakes-Thomas,Crystal Palace,Attack,Right Winger,,
+1352710,George Brierley,Burnley FC,Midfield,Central Midfield,,
+1370903,Jerome Abbey,Wolverhampton Wanderers,Midfield,Defensive Midfield,,
+1407213,Luka Bentt,Brentford FC,Midfield,Attacking Midfield,,
+1414663,Mor Talla Ndiaye,Liverpool FC,Defender,Centre-Back,,

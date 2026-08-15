@@ -24,7 +24,8 @@ from champion_classifier import (  # noqa: E402
 )
 from pizza_chart import build_pizza_chart  # noqa: E402
 from player_comparison_data import (  # noqa: E402
-    build_comparison_dataset, compute_percentiles, player_label,
+    attach_market_value, build_comparison_dataset, compute_percentiles,
+    format_market_value, player_label,
 )
 from player_stats_model import (  # noqa: E402
     predict_upcoming_season, refresh_current_meta, train_position_models,
@@ -91,13 +92,15 @@ def compute_predictions():
     models = train_position_models(train_df, with_cv=False, verbose=False)
     player_hist_live = refresh_current_meta(player_hist, bootstrap)
     players_pred = predict_upcoming_season(models, player_hist_live)
+    players_pred = attach_market_value(players_pred, name_col="full_name")
 
     return sim_results, strengths, champ_clf, players_pred, fetched_at
 
 
 @st.cache_data(show_spinner=False)
 def load_comparison_dataset():
-    return build_comparison_dataset()
+    df = build_comparison_dataset()
+    return attach_market_value(df, name_col="full_name")
 
 
 sim, strengths, champ_clf, players, fetched_at = compute_predictions()
@@ -164,13 +167,15 @@ with tab3:
     pdf = pdf.sort_values(sort_col, ascending=False).head(25)
 
     st.subheader(f"Top predicted {position}s for next season")
-    show_cols = ["full_name", "team_name"] + pred_cols
+    pdf["Market Value"] = pdf["market_value_eur"].map(format_market_value)
+    show_cols = ["full_name", "team_name", "Market Value"] + pred_cols
     rename = {c: c.replace("pred_", "").replace("_", " ").title() for c in pred_cols}
     rename.update({"full_name": "Player", "team_name": "Team"})
     st.dataframe(
         pdf[show_cols].rename(columns=rename),
         hide_index=True, use_container_width=True, height=700,
     )
+    st.caption("Market values from Transfermarkt (via the transfermarkt-datasets project), refreshed twice a year.")
 
 with tab4:
     st.subheader("Player comparison — percentile pizza chart")
@@ -221,5 +226,7 @@ with tab4:
 
         chart_cols = st.columns(num_players)
         for col, (row, label) in zip(chart_cols, chosen):
+            mv = format_market_value(row.get("market_value_eur"))
+            title = f"{label}<br><span style='font-size:11px;color:{BONE_DIM}'>Current value: {mv}</span>"
             with col:
-                st.plotly_chart(build_pizza_chart(row, label), use_container_width=True)
+                st.plotly_chart(build_pizza_chart(row, title), use_container_width=True)

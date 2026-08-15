@@ -60,6 +60,6 @@ def build_pizza_chart(player_row, title: str) -> go.Figure:
             ),
         ),
         paper_bgcolor=INK, plot_bgcolor=INK,
-        showlegend=False, margin=dict(l=40, r=40, t=50, b=30), height=430,
+        showlegend=False, margin=dict(l=40, r=40, t=65, b=30), height=445,
     )
     return fig

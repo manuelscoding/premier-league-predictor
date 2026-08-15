@@ -103,6 +103,51 @@ def player_label(row: pd.Series) -> str:
     return f"{row['full_name']} — {row['team_name']} {season}"
 
 
+def load_market_values() -> pd.DataFrame:
+    df = pd.read_csv(PROCESSED_DIR / "player_market_values.csv")
+    df["name_key"] = df["name"].map(name_key)
+    df["first_tok"] = df["name_key"].map(lambda t: t[0])
+    df["last_tok"] = df["name_key"].map(lambda t: t[1])
+    return df
+
+
+def attach_market_value(df: pd.DataFrame, name_col: str = "full_name") -> pd.DataFrame:
+    """Adds a `market_value_eur` column, matched by name against the current
+    Transfermarkt snapshot. Three-stage fallback, same reasoning as the
+    FBref match: (1) exact (first, last) token match; (2) unique surname in
+    the EPL pool, for nickname mismatches like FPL's "Benjamin White" vs
+    Transfermarkt's "Ben White"; (3) unique first name, for mononyms like
+    "Gabriel". ~80% of current-squad players resolve this way."""
+    tm = load_market_values()
+    df = df.copy()
+    df["name_key"] = df[name_col].map(name_key)
+
+    exact = tm.drop_duplicates("name_key").set_index("name_key")["market_value_in_eur"]
+    df["market_value_eur"] = df["name_key"].map(exact)
+
+    last_counts = tm["last_tok"].value_counts()
+    unique_last = tm[tm["last_tok"].map(last_counts) == 1].set_index("last_tok")["market_value_in_eur"]
+    missing = df["market_value_eur"].isna()
+    df.loc[missing, "market_value_eur"] = df.loc[missing, "name_key"].map(lambda k: k[1]).map(unique_last)
+
+    first_counts = tm["first_tok"].value_counts()
+    unique_first = tm[tm["first_tok"].map(first_counts) == 1].set_index("first_tok")["market_value_in_eur"]
+    still_missing = df["market_value_eur"].isna()
+    df.loc[still_missing, "market_value_eur"] = (
+        df.loc[still_missing, "name_key"].map(lambda k: k[0]).map(unique_first)
+    )
+
+    return df.drop(columns=["name_key"])
+
+
+def format_market_value(value_eur) -> str:
+    if pd.isna(value_eur):
+        return "—"
+    if value_eur >= 1_000_000:
+        return f"€{value_eur / 1_000_000:.1f}m"
+    return f"€{value_eur / 1_000:.0f}k"
+
+
 if __name__ == "__main__":
     df = build_comparison_dataset()
     matched = df["shots_p90"].notna().mean()

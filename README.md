@@ -15,6 +15,9 @@ position, and lets you compare players head-to-head on Opta-style percentile
 - **[FBref](https://fbref.com/)** (via [`soccerdata`](https://github.com/probberechts/soccerdata)) —
   shot volume and defensive-action counts (tackles won, interceptions) that
   FPL doesn't track, for the player-comparison pizza charts
+- **[transfermarkt-datasets](https://github.com/dcaribou/transfermarkt-datasets)** —
+  current player market values, as a public weekly-refreshed CSV dump rather
+  than scraping Transfermarkt directly (see [Market value refresh](#market-value-refresh-every-6-months) below)
 
 ## Live architecture
 
@@ -67,6 +70,12 @@ FBref half (`player_advanced_stats.csv`) is **not** in that job — see
    Fernandes"). About 85% of in-range player-seasons match cleanly; the rest
    are dropped from the comparison pool rather than shown with holes.
 
+   Each player's current Transfermarkt market value is also shown (Player
+   Projections table, and under each chart title in the comparison view) —
+   matched by name with the same 3-stage fallback (exact name → unique
+   surname → unique first name) as a similar name-mismatch problem, ~80%
+   match rate.
+
 ## Pipeline
 
 ```bash
@@ -104,6 +113,17 @@ residential IP, so an automated nightly scrape would be flaky. FBref's
 per-90 numbers also don't move much game-to-game, so a manual refresh every
 few weeks (or once a new season's worth of data is worth pulling) is
 plenty — just commit the regenerated `player_advanced_stats.csv`.
+
+### Market value refresh (every 6 months)
+
+Unlike FBref, `src/fetch_market_values.py` needs no scraping and no special
+environment — it's a plain HTTP download of a public CSV
+(`transfermarkt-datasets`' `players.csv.gz`), filtered to current Premier
+League players. It runs fine in the main `venv` and is wired into its own
+scheduled workflow (`.github/workflows/refresh-market-values.yml`, cron on
+Jan 1 and Jul 1) rather than the nightly job, since market values move far
+slower than match results — roughly the summer/winter transfer-window
+cadence.
 
 ## Known limitations
 
