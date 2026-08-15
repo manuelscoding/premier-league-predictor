@@ -191,21 +191,35 @@ with tab4:
         st.info("No player-seasons with complete data for this position yet.")
     else:
         pct_cols = [f"{c}_pct" for c in comp_df.columns if f"{c}_pct" in pool.columns]
-        pool = pool.assign(_rank_score=pool[pct_cols].mean(axis=1)).sort_values(
-            "_rank_score", ascending=False
-        )
-        labels = [player_label(row) for _, row in pool.iterrows()]
-        pool = pool.set_axis(labels)
+        pool = pool.assign(_rank_score=pool[pct_cols].mean(axis=1))
 
-        selected = st.multiselect(
-            "Players to compare (2-4)", labels, default=labels[:2], max_selections=4,
-        )
+        # rank players by their best-ever season here, just to order the dropdown
+        best_per_player = pool.groupby("full_name")["_rank_score"].max().sort_values(ascending=False)
+        player_names = best_per_player.index.tolist()
 
-        if not selected:
-            st.info("Pick at least one player-season to compare.")
-        else:
-            cols = st.columns(len(selected))
-            for col, label in zip(cols, selected):
-                fig = build_pizza_chart(pool.loc[label], label)
-                with col:
-                    st.plotly_chart(fig, use_container_width=True)
+        num_players = st.selectbox("Number of players to compare", [2, 3, 4], key="cmp_num_players")
+        pick_cols = st.columns(num_players)
+        chosen = []
+        for i, col in enumerate(pick_cols):
+            with col:
+                # keying by position keeps each slot's default sane when the
+                # position changes, instead of holding onto a stale player
+                # from a different position's list
+                default_player = player_names[min(i, len(player_names) - 1)]
+                player = st.selectbox(
+                    f"Player {i + 1}", player_names,
+                    index=player_names.index(default_player),
+                    key=f"cmp_player_{cmp_position}_{i}",
+                )
+                player_seasons = pool.loc[pool["full_name"] == player, "season_name"] \
+                    .drop_duplicates().sort_values(ascending=False).tolist()
+                season = st.selectbox(
+                    "Season", player_seasons, key=f"cmp_season_{cmp_position}_{i}_{player}",
+                )
+                row = pool[(pool["full_name"] == player) & (pool["season_name"] == season)].iloc[0]
+                chosen.append((row, player_label(row)))
+
+        chart_cols = st.columns(num_players)
+        for col, (row, label) in zip(chart_cols, chosen):
+            with col:
+                st.plotly_chart(build_pizza_chart(row, label), use_container_width=True)
