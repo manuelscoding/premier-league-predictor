@@ -6,3 +6,4 @@ statsmodels
 requests
 streamlit
 plotly
+matplotlib
