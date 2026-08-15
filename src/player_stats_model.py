@@ -12,10 +12,10 @@ PROCESSED_DIR = Path(__file__).resolve().parents[1] / "data" / "processed"
 RAW_FPL_DIR = Path(__file__).resolve().parents[1] / "data" / "raw" / "fpl"
 
 POSITION_TARGETS = {
-    "Goalkeeper": ["total_points", "minutes", "clean_sheets", "saves", "goals_conceded"],
-    "Defender": ["total_points", "minutes", "clean_sheets", "goals_scored", "assists"],
-    "Midfielder": ["total_points", "minutes", "goals_scored", "assists"],
-    "Forward": ["total_points", "minutes", "goals_scored", "assists"],
+    "Goalkeeper": ["minutes", "clean_sheets", "saves", "goals_conceded"],
+    "Defender": ["minutes", "clean_sheets", "goals_scored", "assists"],
+    "Midfielder": ["minutes", "goals_scored", "assists"],
+    "Forward": ["minutes", "goals_scored", "assists"],
 }
 
 FEATURE_COLS = (
@@ -134,11 +134,14 @@ def main() -> None:
     predictions.to_csv(PROCESSED_DIR / "player_predictions_next_season.csv", index=False)
 
     print(f"\nSaved predictions for {len(predictions)} players.")
+    sort_priority = ["pred_goals_scored", "pred_clean_sheets", "pred_assists", "pred_saves"]
     for position in POSITION_TARGETS:
         top = predictions[predictions["position"] == position]
-        if "pred_total_points" in top.columns:
-            top = top.sort_values("pred_total_points", ascending=False).head(5)
-            print(f"\nTop 5 predicted {position}s by points:")
+        pred_cols = [c for c in top.columns if c.startswith("pred_") and top[c].notna().any()]
+        sort_col = next((c for c in sort_priority if c in pred_cols), pred_cols[0] if pred_cols else None)
+        if sort_col:
+            top = top.sort_values(sort_col, ascending=False).head(5)
+            print(f"\nTop 5 predicted {position}s by {sort_col.replace('pred_', '')}:")
             print(top.drop(columns=["id"]).to_string(index=False))
 
 

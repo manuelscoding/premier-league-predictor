@@ -1,7 +1,9 @@
 venv/
+venv-fbref/
 __pycache__/
 *.pyc
 .DS_Store
+downloaded_files/
 
 # raw per-season/per-player pulls are large and easy to regenerate via
 # src/fetch_match_data.py + src/fetch_player_data.py; not needed at runtime
@@ -14,3 +16,7 @@ data/processed/champion_classifier_predictions.csv
 data/processed/season_simulation.csv
 data/processed/team_strengths.csv
 data/processed/player_predictions_next_season.csv
+# debug output of running src/player_comparison_data.py standalone; the
+# live app builds this in-memory itself (see dashboard/app.py), doesn't
+# read the file
+data/processed/player_comparison_dataset.csv

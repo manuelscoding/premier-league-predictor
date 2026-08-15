@@ -22,6 +22,10 @@ sys.path.insert(0, str(SRC_DIR))
 from champion_classifier import (  # noqa: E402
     engineer_features, predict_champion_probabilities, train_full_classifier,
 )
+from pizza_chart import build_pizza_chart  # noqa: E402
+from player_comparison_data import (  # noqa: E402
+    build_comparison_dataset, compute_percentiles, player_label,
+)
 from player_stats_model import (  # noqa: E402
     predict_upcoming_season, refresh_current_meta, train_position_models,
 )
@@ -91,6 +95,11 @@ def compute_predictions():
     return sim_results, strengths, champ_clf, players_pred, fetched_at
 
 
+@st.cache_data(show_spinner=False)
+def load_comparison_dataset():
+    return build_comparison_dataset()
+
+
 sim, strengths, champ_clf, players, fetched_at = compute_predictions()
 
 st.title("Premier League Predictor")
@@ -99,7 +108,9 @@ st.caption("Monte Carlo season simulation + historical-trend classifier for the 
 st.caption(f"🔄 Live data as of {fetched_at.strftime('%Y-%m-%d %H:%M UTC')} "
            f"— refreshes automatically every {REFRESH_TTL_SECONDS // 3600} hours.")
 
-tab1, tab2, tab3 = st.tabs(["Title Race", "Predicted Table", "Player Projections"])
+tab1, tab2, tab3, tab4 = st.tabs(
+    ["Title Race", "Predicted Table", "Player Projections", "Player Comparison"]
+)
 
 with tab1:
     col1, col2 = st.columns([2, 1])
@@ -148,7 +159,8 @@ with tab3:
     # saves/clean_sheets for a Midfielder, no clean_sheets for a Forward) —
     # the source data has the union of every position's columns, NaN elsewhere
     pred_cols = [c for c in pdf.columns if c.startswith("pred_") and pdf[c].notna().any()]
-    sort_col = "pred_total_points" if "pred_total_points" in pred_cols else pred_cols[0]
+    sort_priority = ["pred_goals_scored", "pred_clean_sheets", "pred_assists", "pred_saves"]
+    sort_col = next((c for c in sort_priority if c in pred_cols), pred_cols[0])
     pdf = pdf.sort_values(sort_col, ascending=False).head(25)
 
     st.subheader(f"Top predicted {position}s for next season")
@@ -159,3 +171,41 @@ with tab3:
         pdf[show_cols].rename(columns=rename),
         hide_index=True, use_container_width=True, height=700,
     )
+
+with tab4:
+    st.subheader("Player comparison — percentile pizza chart")
+    st.caption(
+        "Each wedge shows where a player-season ranks (0-100th percentile) against other "
+        "same-position players across the last 4 seasons (min. 900 minutes played). "
+        "Shots / Tackles Won / Interceptions come from FBref; Goals / xG / Threat / "
+        "Creativity / xA / Influence come from FPL — a raw stat comparison, not fantasy points."
+    )
+
+    comp_df = load_comparison_dataset()
+    cmp_position = st.selectbox(
+        "Position", ["Forward", "Midfielder", "Defender", "Goalkeeper"], key="cmp_position",
+    )
+    pool = compute_percentiles(comp_df, cmp_position)
+
+    if pool.empty:
+        st.info("No player-seasons with complete data for this position yet.")
+    else:
+        pct_cols = [f"{c}_pct" for c in comp_df.columns if f"{c}_pct" in pool.columns]
+        pool = pool.assign(_rank_score=pool[pct_cols].mean(axis=1)).sort_values(
+            "_rank_score", ascending=False
+        )
+        labels = [player_label(row) for _, row in pool.iterrows()]
+        pool = pool.set_axis(labels)
+
+        selected = st.multiselect(
+            "Players to compare (2-4)", labels, default=labels[:2], max_selections=4,
+        )
+
+        if not selected:
+            st.info("Pick at least one player-season to compare.")
+        else:
+            cols = st.columns(len(selected))
+            for col, label in zip(cols, selected):
+                fig = build_pizza_chart(pool.loc[label], label)
+                with col:
+                    st.plotly_chart(fig, use_container_width=True)
