@@ -1,0 +1,45 @@
+name: Refresh historical data
+
+# Rebuilds the committed data/processed/*.csv base data the dashboard reads
+# on startup (match history, standings, player season history). The
+# dashboard itself pulls live fixtures/roster directly from the FPL API on
+# every cache refresh — this job only needs to run often enough to pick up
+# newly completed seasons and each player's latest season totals.
+on:
+  schedule:
+    - cron: "0 4 * * *"  # 04:00 UTC daily
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pipeline dependencies
+        run: pip install pandas numpy requests
+
+      - name: Fetch + rebuild historical data
+        working-directory: src
+        run: |
+          python fetch_match_data.py
+          python fetch_player_data.py
+          python build_datasets.py
+          python build_player_dataset.py
+
+      - name: Commit refreshed data if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/processed/matches_all_seasons.csv \
+                  data/processed/standings_all_seasons.csv \
+                  data/processed/player_season_history.csv
+          git diff --cached --quiet || git commit -m "Nightly data refresh"
+          git push
