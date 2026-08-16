@@ -28,7 +28,8 @@ from player_comparison_data import (  # noqa: E402
     format_market_value, player_label,
 )
 from player_stats_model import (  # noqa: E402
-    predict_upcoming_season, refresh_current_meta, train_position_models,
+    current_season_stats, predict_upcoming_season, refresh_current_meta,
+    train_position_models,
 )
 from simulate_current_season import run_simulation  # noqa: E402
 
@@ -93,6 +94,7 @@ def compute_predictions():
     player_hist_live = refresh_current_meta(player_hist, bootstrap)
     players_pred = predict_upcoming_season(models, player_hist_live)
     players_pred = attach_market_value(players_pred, name_col="full_name")
+    players_pred = players_pred.merge(current_season_stats(bootstrap), on="id", how="left")
 
     return sim_results, strengths, champ_clf, players_pred, fetched_at
 
@@ -167,10 +169,20 @@ with tab3:
     pdf = pdf.sort_values(sort_col, ascending=False).head(25)
 
     st.subheader(f"Top predicted {position}s for next season")
+    st.caption("\"Current\" is this season's live cumulative stats so far, straight from the FPL API — "
+               "compare against the projection to see how a player is tracking.")
     pdf["Market Value"] = pdf["market_value_eur"].map(format_market_value)
-    show_cols = ["full_name", "team_name", "Market Value"] + pred_cols
-    rename = {c: c.replace("pred_", "").replace("_", " ").title() for c in pred_cols}
-    rename.update({"full_name": "Player", "team_name": "Team"})
+
+    show_cols = ["full_name", "team_name", "Market Value"]
+    rename = {"full_name": "Player", "team_name": "Team"}
+    for pred_col in pred_cols:
+        stat = pred_col.replace("pred_", "")
+        cur_col = f"current_{stat}"
+        label = stat.replace("_", " ").title()
+        show_cols += [cur_col, pred_col]
+        rename[cur_col] = f"{label} (Current)"
+        rename[pred_col] = f"{label} (Projected)"
+
     st.dataframe(
         pdf[show_cols].rename(columns=rename),
         hide_index=True, use_container_width=True, height=700,

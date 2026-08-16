@@ -18,6 +18,17 @@ POSITION_TARGETS = {
     "Forward": ["minutes", "goals_scored", "assists"],
 }
 
+
+def current_season_stats(bootstrap: dict) -> pd.DataFrame:
+    """Each player's live cumulative stats for the season in progress, taken
+    directly from bootstrap-static (no extra API calls) — the raw counting
+    fields FPL updates as gameweeks are played. Before a season's first
+    gameweek is finished, FPL hasn't zeroed these yet, so they still show
+    last season's final totals; they reset once real gameweeks start."""
+    cols = ["id", "minutes", "goals_scored", "assists", "clean_sheets", "saves", "goals_conceded"]
+    df = pd.DataFrame(bootstrap["elements"])[cols]
+    return df.add_prefix("current_").rename(columns={"current_id": "id"})
+
 FEATURE_COLS = (
     [f"prev_{c}" for c in [
         "total_points", "minutes", "goals_scored", "assists", "clean_sheets",
