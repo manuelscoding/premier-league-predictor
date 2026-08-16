@@ -158,36 +158,48 @@ with tab2:
         st.dataframe(strengths, hide_index=True, use_container_width=True)
 
 with tab3:
-    position = st.selectbox("Position", ["Forward", "Midfielder", "Defender", "Goalkeeper"])
+    col_pos, col_team = st.columns([1, 2])
+    with col_pos:
+        position = st.selectbox("Position", ["Forward", "Midfielder", "Defender", "Goalkeeper"])
     pdf = players[players["position"] == position].copy()
-    # only keep stat columns that actually apply to this position (e.g. no
-    # saves/clean_sheets for a Midfielder, no clean_sheets for a Forward) —
-    # the source data has the union of every position's columns, NaN elsewhere
-    pred_cols = [c for c in pdf.columns if c.startswith("pred_") and pdf[c].notna().any()]
-    sort_priority = ["pred_goals_scored", "pred_clean_sheets", "pred_assists", "pred_saves"]
-    sort_col = next((c for c in sort_priority if c in pred_cols), pred_cols[0])
-    pdf = pdf.sort_values(sort_col, ascending=False).head(25)
+    with col_team:
+        team_options = sorted(pdf["team_name"].dropna().unique())
+        team_filter = st.multiselect("Filter by team", team_options, key="proj_team_filter")
+    if team_filter:
+        pdf = pdf[pdf["team_name"].isin(team_filter)]
 
-    st.subheader(f"Top predicted {position}s for next season")
-    st.caption("\"Current\" is this season's live cumulative stats so far, straight from the FPL API — "
-               "compare against the projection to see how a player is tracking.")
-    pdf["Market Value"] = pdf["market_value_eur"].map(format_market_value)
+    if pdf.empty:
+        st.info("No players match this team filter.")
+    else:
+        # only keep stat columns that actually apply to this position (e.g.
+        # no saves/clean_sheets for a Midfielder, no clean_sheets for a
+        # Forward) — the source data has the union of every position's
+        # columns, NaN elsewhere
+        pred_cols = [c for c in pdf.columns if c.startswith("pred_") and pdf[c].notna().any()]
+        sort_priority = ["pred_goals_scored", "pred_clean_sheets", "pred_assists", "pred_saves"]
+        sort_col = next((c for c in sort_priority if c in pred_cols), pred_cols[0])
+        pdf = pdf.sort_values(sort_col, ascending=False).head(25)
 
-    show_cols = ["full_name", "team_name", "Market Value"]
-    rename = {"full_name": "Player", "team_name": "Team"}
-    for pred_col in pred_cols:
-        stat = pred_col.replace("pred_", "")
-        cur_col = f"current_{stat}"
-        label = stat.replace("_", " ").title()
-        show_cols += [cur_col, pred_col]
-        rename[cur_col] = f"{label} (Current)"
-        rename[pred_col] = f"{label} (Projected)"
+        st.subheader(f"Top predicted {position}s for next season")
+        st.caption("\"Current\" is this season's live cumulative stats so far, straight from the FPL API — "
+                   "compare against the projection to see how a player is tracking.")
+        pdf["Market Value"] = pdf["market_value_eur"].map(format_market_value)
 
-    st.dataframe(
-        pdf[show_cols].rename(columns=rename),
-        hide_index=True, use_container_width=True, height=700,
-    )
-    st.caption("Market values from Transfermarkt (via the transfermarkt-datasets project), refreshed twice a year.")
+        show_cols = ["full_name", "team_name", "Market Value"]
+        rename = {"full_name": "Player", "team_name": "Team"}
+        for pred_col in pred_cols:
+            stat = pred_col.replace("pred_", "")
+            cur_col = f"current_{stat}"
+            label = stat.replace("_", " ").title()
+            show_cols += [cur_col, pred_col]
+            rename[cur_col] = f"{label} (Current)"
+            rename[pred_col] = f"{label} (Projected)"
+
+        st.dataframe(
+            pdf[show_cols].rename(columns=rename),
+            hide_index=True, use_container_width=True, height=700,
+        )
+        st.caption("Market values from Transfermarkt (via the transfermarkt-datasets project), refreshed twice a year.")
 
 with tab4:
     st.subheader("Player comparison — percentile pizza chart")
@@ -199,39 +211,43 @@ with tab4:
     )
 
     comp_df = load_comparison_dataset()
-    cmp_position = st.selectbox(
-        "Position", ["Forward", "Midfielder", "Defender", "Goalkeeper"], key="cmp_position",
-    )
+    col_pos, col_team = st.columns([1, 2])
+    with col_pos:
+        cmp_position = st.selectbox(
+            "Position", ["Forward", "Midfielder", "Defender", "Goalkeeper"], key="cmp_position",
+        )
     pool = compute_percentiles(comp_df, cmp_position)
+    with col_team:
+        team_options = sorted(pool["team_name"].dropna().unique())
+        team_filter = st.multiselect("Filter by team", team_options, key=f"cmp_team_filter_{cmp_position}")
+    if team_filter:
+        pool = pool[pool["team_name"].isin(team_filter)]
 
     if pool.empty:
-        st.info("No player-seasons with complete data for this position yet.")
+        st.info("No player-seasons match this position/team filter.")
     else:
-        pct_cols = [f"{c}_pct" for c in comp_df.columns if f"{c}_pct" in pool.columns]
-        pool = pool.assign(_rank_score=pool[pct_cols].mean(axis=1))
-
-        # rank players by their best-ever season here, just to order the dropdown
-        best_per_player = pool.groupby("full_name")["_rank_score"].max().sort_values(ascending=False)
-        player_names = best_per_player.index.tolist()
+        # alphabetical by first name, for a dropdown you can actually scan
+        player_names = sorted(pool["full_name"].unique())
 
         num_players = st.selectbox("Number of players to compare", [2, 3, 4], key="cmp_num_players")
         pick_cols = st.columns(num_players)
         chosen = []
+        filter_key = ",".join(team_filter)
         for i, col in enumerate(pick_cols):
             with col:
-                # keying by position keeps each slot's default sane when the
-                # position changes, instead of holding onto a stale player
-                # from a different position's list
+                # keying by position+team filter keeps each slot's default
+                # sane when either changes, instead of holding onto a stale
+                # player no longer in the (possibly narrower) options list
                 default_player = player_names[min(i, len(player_names) - 1)]
                 player = st.selectbox(
                     f"Player {i + 1}", player_names,
                     index=player_names.index(default_player),
-                    key=f"cmp_player_{cmp_position}_{i}",
+                    key=f"cmp_player_{cmp_position}_{filter_key}_{i}",
                 )
                 player_seasons = pool.loc[pool["full_name"] == player, "season_name"] \
                     .drop_duplicates().sort_values(ascending=False).tolist()
                 season = st.selectbox(
-                    "Season", player_seasons, key=f"cmp_season_{cmp_position}_{i}_{player}",
+                    "Season", player_seasons, key=f"cmp_season_{cmp_position}_{filter_key}_{i}_{player}",
                 )
                 row = pool[(pool["full_name"] == player) & (pool["season_name"] == season)].iloc[0]
                 chosen.append((row, player_label(row)))
