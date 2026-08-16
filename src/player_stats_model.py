@@ -22,11 +22,21 @@ POSITION_TARGETS = {
 def current_season_stats(bootstrap: dict) -> pd.DataFrame:
     """Each player's live cumulative stats for the season in progress, taken
     directly from bootstrap-static (no extra API calls) — the raw counting
-    fields FPL updates as gameweeks are played. Before a season's first
-    gameweek is finished, FPL hasn't zeroed these yet, so they still show
-    last season's final totals; they reset once real gameweeks start."""
+    fields FPL updates as gameweeks are played.
+
+    Before a season's first gameweek kicks off, FPL hasn't reset these
+    fields yet, so the raw values are still last season's final totals —
+    not "0 games played this season" like they should read. We detect that
+    state from the gameweeks list (`events`) and zero everything out
+    ourselves until a gameweek is actually current or finished.
+    """
     cols = ["id", "minutes", "goals_scored", "assists", "clean_sheets", "saves", "goals_conceded"]
     df = pd.DataFrame(bootstrap["elements"])[cols]
+
+    season_started = any(e.get("is_current") or e.get("finished") for e in bootstrap["events"])
+    if not season_started:
+        df[cols[1:]] = 0
+
     return df.add_prefix("current_").rename(columns={"current_id": "id"})
 
 FEATURE_COLS = (
