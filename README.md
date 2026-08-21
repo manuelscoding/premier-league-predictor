@@ -185,18 +185,3 @@ cadence.
   schedule quirks (winter break timing, postponements) — it's just "every
   team plays every other team twice," which is the right *set* of games
   but not necessarily in the real order.
-
-## Local development note
-
-If this project lives under a folder iCloud Drive syncs (e.g. `~/Documents`
-with "Desktop & Documents" sync enabled), macOS can evict rarely-touched
-files — including a venv's installed packages — to cloud-only storage to
-save local disk space. Re-accessing them then blocks on an on-demand
-download that can be slow or, under heavy sync load, effectively hang
-(`ls -lO` shows `dataless` on the affected files). Keeping the actual
-Python virtualenv outside the synced tree (e.g. `~/venvs/` instead of
-`./venv`) avoids this entirely — venvs are machine-specific and
-trivially reproducible from `requirements.txt`, so there's no reason for
-them to be cloud-synced in the first place. If a run of the pipeline
-scripts seems to hang with near-zero CPU usage, this is the first thing
-to check (`ls -lO <path>` — look for `dataless` in the flags column).
