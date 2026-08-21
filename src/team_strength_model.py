@@ -25,9 +25,55 @@ FD_TO_FPL = {
 FPL_TO_FD = {v: k for k, v in FD_TO_FPL.items()}
 
 
-def load_recent_matches(seasons: list[str]) -> pd.DataFrame:
+def load_recent_matches(seasons: list[str], league: str = "Premier League") -> pd.DataFrame:
     matches = pd.read_csv(PROCESSED_DIR / "matches_all_seasons.csv", parse_dates=["Date"])
-    return matches[matches["Season"].isin(seasons)].copy()
+    return matches[(matches["Season"].isin(seasons)) & (matches["League"] == league)].copy()
+
+
+def load_league_matches(league: str) -> pd.DataFrame:
+    matches = pd.read_csv(PROCESSED_DIR / "matches_all_seasons.csv", parse_dates=["Date"])
+    return matches[matches["League"] == league].copy()
+
+
+def generate_current_season_fixtures(league_matches: pd.DataFrame, min_teams: int = 18) -> pd.DataFrame:
+    """Builds a full double round-robin fixture list (every team home+away
+    against every other) for leagues with no live fixtures API — used for
+    La Liga instead of the FPL-fixtures path used for the Premier League.
+
+    Team roster comes from the most recent season with enough matches
+    played to have seen (most of) the full league; if the latest season is
+    too early in its life (or hasn't started) to reveal all ~20 teams, we
+    fall back to the prior season's roster — a preseason simulation using
+    last year's line-up, same idea as the promoted-team strength fallback.
+    Already-played fixtures in the latest season are marked Finished with
+    their actual score; everything else is left for the Monte Carlo sim.
+    """
+    seasons = sorted(league_matches["Season"].unique())
+    latest_season = seasons[-1]
+    latest = league_matches[league_matches["Season"] == latest_season]
+
+    teams = sorted(set(latest["HomeTeam"]) | set(latest["AwayTeam"]))
+    roster_season = latest_season
+    if len(teams) < min_teams and len(seasons) > 1:
+        roster_season = seasons[-2]
+        teams = sorted(set(league_matches.loc[league_matches["Season"] == roster_season, "HomeTeam"])
+                        | set(league_matches.loc[league_matches["Season"] == roster_season, "AwayTeam"]))
+
+    pairs = [(h, a) for h in teams for a in teams if h != a]
+    fixtures = pd.DataFrame(pairs, columns=["HomeTeam", "AwayTeam"])
+
+    played = latest[["HomeTeam", "AwayTeam", "FTHG", "FTAG"]].rename(
+        columns={"FTHG": "HomeGoals", "FTAG": "AwayGoals"}
+    )
+    played["Finished"] = True
+    fixtures = fixtures.merge(played, on=["HomeTeam", "AwayTeam"], how="left")
+    # merge leaves this as object dtype (True/False/NaN mixed), where `~`
+    # does a Python bitwise-invert per element (~True == -2) instead of
+    # boolean negation — cast back to real bool after filling the NaNs
+    fixtures["Finished"] = fixtures["Finished"].fillna(False).astype(bool)
+    fixtures.attrs["season"] = latest_season
+    fixtures.attrs["roster_season"] = roster_season
+    return fixtures
 
 
 def _decay_weights(dates: pd.Series, half_life_days: float = 380.0) -> np.ndarray:

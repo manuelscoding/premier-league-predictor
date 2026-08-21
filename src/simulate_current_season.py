@@ -44,13 +44,15 @@ def load_upcoming_fixtures(bootstrap: dict | None = None, fixtures_raw: list | N
     return fixtures_to_df(bootstrap, fixtures_raw)
 
 
-def run_simulation(matches: pd.DataFrame, bootstrap: dict, fixtures_raw: list,
-                    n_sims: int = 20000) -> tuple[pd.DataFrame, pd.DataFrame]:
+def simulate_from_fixtures(matches: pd.DataFrame, fixtures: pd.DataFrame,
+                            n_sims: int = 20000) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Fit team strengths on `matches` and simulate the season implied by
-    `fixtures_raw`. Returns (sim_results, team_strengths)."""
+    `fixtures` (columns: HomeTeam, AwayTeam, Finished, HomeGoals, AwayGoals).
+    Returns (sim_results, team_strengths). Shared core for both the
+    FPL-fixtures path (Premier League) and the round-robin-generated path
+    (leagues with no live fixtures API, e.g. La Liga)."""
     strengths, model = fit_team_strengths(matches)
 
-    fixtures = fixtures_to_df(bootstrap, fixtures_raw)
     remaining = fixtures[~fixtures["Finished"]].copy()
     played = fixtures[fixtures["Finished"]].copy()
 
@@ -73,6 +75,13 @@ def run_simulation(matches: pd.DataFrame, bootstrap: dict, fixtures_raw: list,
 
     sim_results = sim_results.sort_values("Title_Prob", ascending=False).reset_index(drop=True)
     return sim_results, strengths
+
+
+def run_simulation(matches: pd.DataFrame, bootstrap: dict, fixtures_raw: list,
+                    n_sims: int = 20000) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Premier League path: fixtures come live from the FPL API."""
+    fixtures = fixtures_to_df(bootstrap, fixtures_raw)
+    return simulate_from_fixtures(matches, fixtures, n_sims=n_sims)
 
 
 def main(n_sims: int = 20000) -> None:

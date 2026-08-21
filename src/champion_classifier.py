@@ -22,6 +22,24 @@ FEATURES = [
 ]
 
 
+def drop_incomplete_latest_season(standings: pd.DataFrame, min_played: int = 10) -> pd.DataFrame:
+    """Excludes the most recent season if it's barely underway — otherwise a
+    team that's played just 1-2 games this season would have its trailing-
+    form features built from that tiny partial sample instead of last
+    season's real final total, corrupting exactly the teams that happen to
+    have already played while leaving everyone else on last season's numbers.
+    Only matters once a league actually has some current-season results on
+    file (this was a non-issue for the Premier League before now, since
+    football-data.co.uk had no 2026-27 file yet; La Liga's does)."""
+    if standings.empty:
+        return standings
+    latest_season = standings["Season"].max()
+    latest_played = standings.loc[standings["Season"] == latest_season, "Played"].max()
+    if latest_played < min_played:
+        return standings[standings["Season"] != latest_season]
+    return standings
+
+
 def engineer_features(standings: pd.DataFrame) -> pd.DataFrame:
     df = standings.sort_values(["Team", "Season"]).copy()
     df["Prev_Top4"] = df.groupby("Team")["Top4"].shift(1)
@@ -71,9 +89,10 @@ def evaluate_top1_accuracy(clf, df: pd.DataFrame) -> float:
     return hits / len(seasons)
 
 
-def main() -> None:
+def main(league: str = "Premier League") -> None:
     standings = pd.read_csv(PROCESSED_DIR / "standings_all_seasons.csv")
-    df = engineer_features(standings)
+    standings = standings[standings["League"] == league]
+    df = engineer_features(drop_incomplete_latest_season(standings))
     df = df[df["Season"] >= "1995-96"]  # drop first couple seasons lost to shift()
 
     all_seasons = sorted(df["Season"].unique())
@@ -96,7 +115,8 @@ def main() -> None:
     clf_full = train_full_classifier(df)
 
     bootstrap = json.loads((RAW_FPL_DIR / "bootstrap-static.json").read_text())
-    preview = predict_champion_probabilities(clf_full, df, bootstrap)
+    current_roster = load_current_roster(bootstrap)
+    preview = predict_champion_probabilities(clf_full, df, current_roster)
     print("\nTop 10 predicted title contenders for next season (renormalized):")
     print(preview.round(3).to_string(index=False))
     preview.to_csv(PROCESSED_DIR / "champion_classifier_predictions.csv", index=False)
@@ -109,9 +129,8 @@ def load_current_roster(bootstrap: dict | None = None) -> list[str]:
     return [FPL_TO_FD.get(n, n) for n in fpl_names]
 
 
-def predict_champion_probabilities(clf, df: pd.DataFrame, bootstrap: dict) -> pd.DataFrame:
+def predict_champion_probabilities(clf, df: pd.DataFrame, current_roster: list[str]) -> pd.DataFrame:
     """Top-10 renormalized champion probabilities for the current roster."""
-    current_roster = load_current_roster(bootstrap)
     next_rows = build_next_season_features(df, current_roster)
     next_rows["proba_champion"] = clf.predict_proba(next_rows[FEATURES])[:, 1]
     preview = next_rows[["Team", "proba_champion"]].sort_values(

@@ -20,7 +20,8 @@ SRC_DIR = Path(__file__).resolve().parents[1] / "src"
 sys.path.insert(0, str(SRC_DIR))
 
 from champion_classifier import (  # noqa: E402
-    engineer_features, predict_champion_probabilities, train_full_classifier,
+    drop_incomplete_latest_season, engineer_features, load_current_roster,
+    predict_champion_probabilities, train_full_classifier,
 )
 from pizza_chart import build_pizza_chart  # noqa: E402
 from player_comparison_data import (  # noqa: E402
@@ -31,7 +32,10 @@ from player_stats_model import (  # noqa: E402
     current_season_stats, predict_upcoming_season, refresh_current_meta,
     train_position_models,
 )
-from simulate_current_season import run_simulation  # noqa: E402
+from simulate_current_season import run_simulation, simulate_from_fixtures  # noqa: E402
+from team_strength_model import generate_current_season_fixtures  # noqa: E402
+
+LEAGUES = ["Premier League", "La Liga"]
 
 PROCESSED_DIR = Path(__file__).resolve().parents[1] / "data" / "processed"
 FPL_BASE = "https://fantasy.premierleague.com/api"
@@ -67,27 +71,58 @@ def fetch_live_fpl():
 
 
 @st.cache_data(show_spinner=False)
-def load_historical():
-    """Committed base data (refreshed nightly by CI, not on every visit)."""
+def load_match_history(league: str):
+    """Committed base data (refreshed nightly by CI, not on every visit).
+    Returns (last-3-seasons matches for strength fitting, standings,
+    every season on file for this league — the last one's needed to build
+    a round-robin fixture list for leagues with no live fixtures API)."""
     all_matches = pd.read_csv(PROCESSED_DIR / "matches_all_seasons.csv", parse_dates=["Date"])
-    last3_seasons = sorted(all_matches["Season"].unique())[-3:]
-    matches = all_matches[all_matches["Season"].isin(last3_seasons)]
-    standings = pd.read_csv(PROCESSED_DIR / "standings_all_seasons.csv")
-    player_hist = pd.read_csv(PROCESSED_DIR / "player_season_history.csv")
-    return matches, standings, player_hist
+    league_matches = all_matches[all_matches["League"] == league]
+    last3_seasons = sorted(league_matches["Season"].unique())[-3:]
+    matches = league_matches[league_matches["Season"].isin(last3_seasons)]
+    all_standings = pd.read_csv(PROCESSED_DIR / "standings_all_seasons.csv")
+    standings = all_standings[all_standings["League"] == league]
+    return matches, standings, league_matches
 
 
-@st.cache_data(ttl=REFRESH_TTL_SECONDS, show_spinner="Recomputing predictions from live data...")
-def compute_predictions():
-    bootstrap, fixtures_raw, fetched_at = fetch_live_fpl()
-    matches, standings, player_hist = load_historical()
+@st.cache_data(show_spinner=False)
+def load_player_history():
+    return pd.read_csv(PROCESSED_DIR / "player_season_history.csv")
 
-    sim_results, strengths = run_simulation(matches, bootstrap, fixtures_raw, n_sims=20000)
 
-    champ_df = engineer_features(standings)
+@st.cache_data(ttl=REFRESH_TTL_SECONDS, show_spinner="Recomputing title race from live data...")
+def compute_team_predictions(league: str):
+    matches, standings, league_matches = load_match_history(league)
+
+    champ_df = engineer_features(drop_incomplete_latest_season(standings))
     champ_df = champ_df[champ_df["Season"] >= "1995-96"]
     clf_full = train_full_classifier(champ_df)
-    champ_clf = predict_champion_probabilities(clf_full, champ_df, bootstrap)
+
+    if league == "Premier League":
+        # live fixtures/results straight from the FPL API
+        bootstrap, fixtures_raw, fetched_at = fetch_live_fpl()
+        sim_results, strengths = run_simulation(matches, bootstrap, fixtures_raw, n_sims=20000)
+        current_roster = load_current_roster(bootstrap)
+    else:
+        # no equivalent live fixtures API for this league — generate the
+        # full round-robin ourselves and mark off what's already been
+        # played from football-data.co.uk's current-season file
+        fixtures = generate_current_season_fixtures(league_matches)
+        sim_results, strengths = simulate_from_fixtures(matches, fixtures, n_sims=20000)
+        current_roster = sorted(set(fixtures["HomeTeam"]) | set(fixtures["AwayTeam"]))
+        fetched_at = datetime.now(timezone.utc)
+
+    champ_clf = predict_champion_probabilities(clf_full, champ_df, current_roster)
+    return sim_results, strengths, champ_clf, fetched_at
+
+
+@st.cache_data(ttl=REFRESH_TTL_SECONDS, show_spinner="Recomputing player projections from live data...")
+def compute_player_predictions():
+    """Premier League only — there's no Fantasy La Liga API to build this
+    from (goals/assists/minutes/ICT/current-season live stats all come
+    from Fantasy Premier League specifically)."""
+    bootstrap, fixtures_raw, fetched_at = fetch_live_fpl()
+    player_hist = load_player_history()
 
     train_df = player_hist[player_hist["seasons_played"] > 0]
     models = train_position_models(train_df, with_cv=False, verbose=False)
@@ -96,7 +131,7 @@ def compute_predictions():
     players_pred = attach_market_value(players_pred, name_col="full_name")
     players_pred = players_pred.merge(current_season_stats(bootstrap), on="id", how="left")
 
-    return sim_results, strengths, champ_clf, players_pred, fetched_at
+    return players_pred, fetched_at
 
 
 @st.cache_data(show_spinner=False)
@@ -105,12 +140,15 @@ def load_comparison_dataset():
     return attach_market_value(df, name_col="full_name")
 
 
-sim, strengths, champ_clf, players, fetched_at = compute_predictions()
-
-st.title("Premier League Predictor")
+st.title("European Football Predictor")
 st.caption("Monte Carlo season simulation + historical-trend classifier for the title race, "
            "and per-position regression models for player stat projections.")
-st.caption(f"🔄 Live data as of {fetched_at.strftime('%Y-%m-%d %H:%M UTC')} "
+
+league = st.selectbox("League", LEAGUES, key="league_select")
+sim, strengths, champ_clf, fetched_at = compute_team_predictions(league)
+players, players_fetched_at = compute_player_predictions()
+
+st.caption(f"🔄 {league} data as of {fetched_at.strftime('%Y-%m-%d %H:%M UTC')} "
            f"— refreshes automatically every {REFRESH_TTL_SECONDS // 3600} hours.")
 
 tab1, tab2, tab3, tab4 = st.tabs(
@@ -157,104 +195,118 @@ with tab2:
     with st.expander("Underlying team attack/defense strengths (Poisson model)"):
         st.dataframe(strengths, hide_index=True, use_container_width=True)
 
+PLAYER_TAB_NOTE = (
+    "Player-level features are Premier League only for now — there's no Fantasy "
+    "La Liga API to build projections, market-value matching, or the ICT-based "
+    "pizza-chart categories from. Team-level predictions (Title Race, Predicted "
+    "Table) cover both leagues."
+)
+
 with tab3:
-    col_pos, col_team = st.columns([1, 2])
-    with col_pos:
-        position = st.selectbox("Position", ["Forward", "Midfielder", "Defender", "Goalkeeper"])
-    pdf = players[players["position"] == position].copy()
-    with col_team:
-        team_options = sorted(pdf["team_name"].dropna().unique())
-        team_filter = st.multiselect("Filter by team", team_options, key="proj_team_filter")
-    if team_filter:
-        pdf = pdf[pdf["team_name"].isin(team_filter)]
-
-    if pdf.empty:
-        st.info("No players match this team filter.")
+    if league != "Premier League":
+        st.info(PLAYER_TAB_NOTE)
     else:
-        # only keep stat columns that actually apply to this position (e.g.
-        # no saves/clean_sheets for a Midfielder, no clean_sheets for a
-        # Forward) — the source data has the union of every position's
-        # columns, NaN elsewhere
-        pred_cols = [c for c in pdf.columns if c.startswith("pred_") and pdf[c].notna().any()]
-        sort_priority = ["pred_goals_scored", "pred_clean_sheets", "pred_assists", "pred_saves"]
-        sort_col = next((c for c in sort_priority if c in pred_cols), pred_cols[0])
-        pdf = pdf.sort_values(sort_col, ascending=False).head(25)
+        col_pos, col_team = st.columns([1, 2])
+        with col_pos:
+            position = st.selectbox("Position", ["Forward", "Midfielder", "Defender", "Goalkeeper"])
+        pdf = players[players["position"] == position].copy()
+        with col_team:
+            team_options = sorted(pdf["team_name"].dropna().unique())
+            team_filter = st.multiselect("Filter by team", team_options, key="proj_team_filter")
+        if team_filter:
+            pdf = pdf[pdf["team_name"].isin(team_filter)]
 
-        st.subheader(f"Top predicted {position}s for next season")
-        st.caption("\"Current\" is this season's live cumulative stats so far, straight from the FPL API — "
-                   "compare against the projection to see how a player is tracking.")
-        pdf["Market Value"] = pdf["market_value_eur"].map(format_market_value)
+        if pdf.empty:
+            st.info("No players match this team filter.")
+        else:
+            # only keep stat columns that actually apply to this position
+            # (e.g. no saves/clean_sheets for a Midfielder, no clean_sheets
+            # for a Forward) — the source data has the union of every
+            # position's columns, NaN elsewhere
+            pred_cols = [c for c in pdf.columns if c.startswith("pred_") and pdf[c].notna().any()]
+            sort_priority = ["pred_goals_scored", "pred_clean_sheets", "pred_assists", "pred_saves"]
+            sort_col = next((c for c in sort_priority if c in pred_cols), pred_cols[0])
+            pdf = pdf.sort_values(sort_col, ascending=False).head(25)
 
-        show_cols = ["full_name", "team_name", "Market Value"]
-        rename = {"full_name": "Player", "team_name": "Team"}
-        for pred_col in pred_cols:
-            stat = pred_col.replace("pred_", "")
-            cur_col = f"current_{stat}"
-            label = stat.replace("_", " ").title()
-            show_cols += [cur_col, pred_col]
-            rename[cur_col] = f"{label} (Current)"
-            rename[pred_col] = f"{label} (Projected)"
+            st.subheader(f"Top predicted {position}s for next season")
+            st.caption("\"Current\" is this season's live cumulative stats so far, straight from the FPL API — "
+                       "compare against the projection to see how a player is tracking.")
+            pdf["Market Value"] = pdf["market_value_eur"].map(format_market_value)
 
-        st.dataframe(
-            pdf[show_cols].rename(columns=rename),
-            hide_index=True, use_container_width=True, height=700,
-        )
-        st.caption("Market values from Transfermarkt (via the transfermarkt-datasets project), refreshed twice a year.")
+            show_cols = ["full_name", "team_name", "Market Value"]
+            rename = {"full_name": "Player", "team_name": "Team"}
+            for pred_col in pred_cols:
+                stat = pred_col.replace("pred_", "")
+                cur_col = f"current_{stat}"
+                label = stat.replace("_", " ").title()
+                show_cols += [cur_col, pred_col]
+                rename[cur_col] = f"{label} (Current)"
+                rename[pred_col] = f"{label} (Projected)"
+
+            st.dataframe(
+                pdf[show_cols].rename(columns=rename),
+                hide_index=True, use_container_width=True, height=700,
+            )
+            st.caption("Market values from Transfermarkt (via the transfermarkt-datasets project), refreshed twice a year.")
 
 with tab4:
-    st.subheader("Player comparison — percentile pizza chart")
-    st.caption(
-        "Each wedge shows where a player-season ranks (0-100th percentile) against other "
-        "same-position players across the last 4 seasons (min. 900 minutes played). "
-        "Shots / Tackles Won / Interceptions come from FBref; Goals / xG / Threat / "
-        "Creativity / xA / Influence come from FPL — a raw stat comparison, not fantasy points."
-    )
-
-    comp_df = load_comparison_dataset()
-    col_pos, col_team = st.columns([1, 2])
-    with col_pos:
-        cmp_position = st.selectbox(
-            "Position", ["Forward", "Midfielder", "Defender", "Goalkeeper"], key="cmp_position",
-        )
-    pool = compute_percentiles(comp_df, cmp_position)
-    with col_team:
-        team_options = sorted(pool["team_name"].dropna().unique())
-        team_filter = st.multiselect("Filter by team", team_options, key=f"cmp_team_filter_{cmp_position}")
-    if team_filter:
-        pool = pool[pool["team_name"].isin(team_filter)]
-
-    if pool.empty:
-        st.info("No player-seasons match this position/team filter.")
+    if league != "Premier League":
+        st.info(PLAYER_TAB_NOTE)
     else:
-        # alphabetical by first name, for a dropdown you can actually scan
-        player_names = sorted(pool["full_name"].unique())
+        st.subheader("Player comparison — percentile pizza chart")
+        st.caption(
+            "Each wedge shows where a player-season ranks (0-100th percentile) against other "
+            "same-position players across the last 4 seasons (min. 900 minutes played). "
+            "Shots / Tackles Won / Interceptions come from FBref; Goals / xG / Threat / "
+            "Creativity / xA / Influence come from FPL — a raw stat comparison, not fantasy points."
+        )
 
-        num_players = st.selectbox("Number of players to compare", [2, 3, 4], key="cmp_num_players")
-        pick_cols = st.columns(num_players)
-        chosen = []
-        filter_key = ",".join(team_filter)
-        for i, col in enumerate(pick_cols):
-            with col:
-                # keying by position+team filter keeps each slot's default
-                # sane when either changes, instead of holding onto a stale
-                # player no longer in the (possibly narrower) options list
-                default_player = player_names[min(i, len(player_names) - 1)]
-                player = st.selectbox(
-                    f"Player {i + 1}", player_names,
-                    index=player_names.index(default_player),
-                    key=f"cmp_player_{cmp_position}_{filter_key}_{i}",
-                )
-                player_seasons = pool.loc[pool["full_name"] == player, "season_name"] \
-                    .drop_duplicates().sort_values(ascending=False).tolist()
-                season = st.selectbox(
-                    "Season", player_seasons, key=f"cmp_season_{cmp_position}_{filter_key}_{i}_{player}",
-                )
-                row = pool[(pool["full_name"] == player) & (pool["season_name"] == season)].iloc[0]
-                chosen.append((row, player_label(row)))
+        comp_df = load_comparison_dataset()
+        col_pos, col_team = st.columns([1, 2])
+        with col_pos:
+            cmp_position = st.selectbox(
+                "Position", ["Forward", "Midfielder", "Defender", "Goalkeeper"], key="cmp_position",
+            )
+        pool = compute_percentiles(comp_df, cmp_position)
+        with col_team:
+            team_options = sorted(pool["team_name"].dropna().unique())
+            team_filter = st.multiselect("Filter by team", team_options, key=f"cmp_team_filter_{cmp_position}")
+        if team_filter:
+            pool = pool[pool["team_name"].isin(team_filter)]
 
-        chart_cols = st.columns(num_players)
-        for col, (row, label) in zip(chart_cols, chosen):
-            mv = format_market_value(row.get("market_value_eur"))
-            title = f"{label}<br><span style='font-size:11px;color:{BONE_DIM}'>Current value: {mv}</span>"
-            with col:
-                st.plotly_chart(build_pizza_chart(row, title), use_container_width=True)
+        if pool.empty:
+            st.info("No player-seasons match this position/team filter.")
+        else:
+            # alphabetical by first name, for a dropdown you can actually scan
+            player_names = sorted(pool["full_name"].unique())
+
+            num_players = st.selectbox("Number of players to compare", [2, 3, 4], key="cmp_num_players")
+            pick_cols = st.columns(num_players)
+            chosen = []
+            filter_key = ",".join(team_filter)
+            for i, col in enumerate(pick_cols):
+                with col:
+                    # keying by position+team filter keeps each slot's
+                    # default sane when either changes, instead of holding
+                    # onto a stale player no longer in the (possibly
+                    # narrower) options list
+                    default_player = player_names[min(i, len(player_names) - 1)]
+                    player = st.selectbox(
+                        f"Player {i + 1}", player_names,
+                        index=player_names.index(default_player),
+                        key=f"cmp_player_{cmp_position}_{filter_key}_{i}",
+                    )
+                    player_seasons = pool.loc[pool["full_name"] == player, "season_name"] \
+                        .drop_duplicates().sort_values(ascending=False).tolist()
+                    season = st.selectbox(
+                        "Season", player_seasons, key=f"cmp_season_{cmp_position}_{filter_key}_{i}_{player}",
+                    )
+                    row = pool[(pool["full_name"] == player) & (pool["season_name"] == season)].iloc[0]
+                    chosen.append((row, player_label(row)))
+
+            chart_cols = st.columns(num_players)
+            for col, (row, label) in zip(chart_cols, chosen):
+                mv = format_market_value(row.get("market_value_eur"))
+                title = f"{label}<br><span style='font-size:11px;color:{BONE_DIM}'>Current value: {mv}</span>"
+                with col:
+                    st.plotly_chart(build_pizza_chart(row, title), use_container_width=True)
